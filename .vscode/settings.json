@@ -1,4 +1,4 @@
 {
-    "8bitworkshop.platform": "nes",
-    "8bitworkshop.mainFile": "sprites.c"
+    "8bitworkshop.platform": "gb.color",
+    "8bitworkshop.mainFile": "siegegame.c"
 }
