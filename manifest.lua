@@ -1,6 +1,6 @@
 
 local app = {
-   name = "NewProject",
+   name = "33 Ways To Get Some Grain",
 
    tilesets = {
       "overlay/overlay.bmp",
