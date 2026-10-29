@@ -34,6 +34,25 @@ import math
 # with buttons for setting up 4 color monochrome
 # ect
 # this is kinda like ranting idk
+# add 30 levels
+# make levels mission based 
+# also hackatime got blocked
+# lockin with ~3 hours per day
+# add more particle effects for shooting
+# 16x16 sprites for vehicles
+# 8x8 alians 16x16 aliens 32x32 mega aliens
+# 4x4 projectiles 2x2 projectiles
+# exlosions size of tanks and helicopters 16x16
+# nuke explosions
+# alians that shoot stuff
+# flying alians
+# should i have ai bots manning other vehicles?
+# oh maybe just have battering rams that dont move and just autofire
+# add closest alian to fire
+# invisble health bars
+# alians and battering rams get destroyed
+# stationary walls to keep alians out simulation
+# test 2
 
 # BITMAP: width: 32, height: 32
 bitmap0 = bytearray([0,0,0,0,0,0,0,0,248,8,232,40,40,40,40,40,40,40,40,40,40,232,8,248,0,0,0,0,0,0,0,
