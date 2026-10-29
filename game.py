@@ -2,11 +2,19 @@ import time
 import thumby
 import math
 
+# tank game make destructable terrain
+# also add planes that can drop bombs
+# add aliens that try raiding you
+# add levels or procedual generation
+# ect. ect.
+#
+
 # BITMAP: width: 32, height: 32
 bitmap0 = bytearray([0,0,0,0,0,0,0,0,248,8,232,40,40,40,40,40,40,40,40,40,40,232,8,248,0,0,0,0,0,0,0,
                      0,0,0,0,0,0,0,0,0,255,0,63,32,32,32,32,32,32,32,32,32,32,63,0,255,0,0,0,0,0,0,0,
                      0,0,0,0,0,0,0,0,0,255,0,12,12,63,63,12,12,0,0,24,24,3,3,0,255,0,0,0,0,0,0,0,0,0,
                      0,0,0,0,0,0,0,31,16,16,16,16,20,18,16,20,18,16,16,16,16,16,31,0,0,0,0,0,0,0,0])
+
 
 # Make a sprite object using bytearray (a path to binary file from 'IMPORT SPRITE' is also valid)
 thumbySprite = thumby.Sprite(32, 32, bitmap0)
