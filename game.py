@@ -7,7 +7,13 @@ import math
 # add aliens that try raiding you
 # add levels or procedual generation
 # ect. ect.
-#
+# add diffecnt textures
+# 4 color system
+# add more stuff
+# like: instructions
+# sound
+# particles
+# ect.
 
 # BITMAP: width: 32, height: 32
 bitmap0 = bytearray([0,0,0,0,0,0,0,0,248,8,232,40,40,40,40,40,40,40,40,40,40,232,8,248,0,0,0,0,0,0,0,
