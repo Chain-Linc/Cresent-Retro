@@ -11,7 +11,6 @@ bitmap0 = bytearray([0,0,0,0,0,0,0,0,248,8,232,40,40,40,40,40,40,40,40,40,40,232
 # Make a sprite object using bytearray (a path to binary file from 'IMPORT SPRITE' is also valid)
 thumbySprite = thumby.Sprite(32, 32, bitmap0)
 
-# Set the FPS (without this call, the default fps is 30)
 thumby.display.setFPS(60)
 
 while(1):
