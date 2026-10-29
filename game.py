@@ -14,6 +14,26 @@ import math
 # sound
 # particles
 # ect.
+# tank 3 types, helicopter 3 types, plane, granade launcher? limited ammo, supply box drops, ships? foot solderies prob not, aliens 6 types
+# tank fast, weak
+# medium good range
+# heavy slow large projectiles
+# nuke drops
+# drone contol
+# aliens attacking walls
+# alians breacking water
+# alians making ramp to get over walls
+# alian spltter effect
+# sync files
+# add buring animation with smoke
+# python sync files with thumby ide
+# maybe make vs code extension
+# so i can edit bitmaps
+# maybe i only need one way and occasionally copy paste
+# add nice start menu
+# with buttons for setting up 4 color monochrome
+# ect
+# this is kinda like ranting idk
 
 # BITMAP: width: 32, height: 32
 bitmap0 = bytearray([0,0,0,0,0,0,0,0,248,8,232,40,40,40,40,40,40,40,40,40,40,232,8,248,0,0,0,0,0,0,0,
