@@ -54,6 +54,35 @@ import math
 # stationary walls to keep alians out simulation
 # test 2
 
+# redo specs:
+# 1. make a destroyable field
+# 2. add a little player that can jump around
+# 3. add first tank that can shoot and destroy terrain
+# 4. add a enemy tank clone
+# 5. add more enemies
+# 6. add autoaiming
+# 7. add a helicopter
+# 8. add a plane
+# 9. add polish like explosions and sound
+# 10. add water
+# 11. add ship
+# 12. add submarine
+# 13. add more polish like a start menu
+# 14. add nice readme
+
+# coloring of field will be white background
+# black dirt/ dark grey but definitly 2 thick band across top
+# destroyable field will have pixles of 100 tall and will have slope of about 1/4 max
+# tanks will not be able to go up steep hills and will have to be jumped out off to get past
+# enemy tanks will have exact same autoaim technology as you but your health is greatly inflated
+# tanks = 12x8
+# helicopters = 12x8
+# planes = 16x8
+# ships = 16x8
+# submarines = 16x8
+# guy = 2x2
+
+
 # BITMAP: width: 32, height: 32
 bitmap0 = bytearray([0,0,0,0,0,0,0,0,248,8,232,40,40,40,40,40,40,40,40,40,40,232,8,248,0,0,0,0,0,0,0,
                      0,0,0,0,0,0,0,0,0,255,0,63,32,32,32,32,32,32,32,32,32,32,63,0,255,0,0,0,0,0,0,0,
