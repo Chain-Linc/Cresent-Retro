@@ -46,5 +46,4 @@ display.setFPS(60)
 while True:
     t0 = time.ticks_ms()   # Get time (ms)
     
-
     updateDisplay()
