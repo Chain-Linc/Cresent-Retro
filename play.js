@@ -34,6 +34,7 @@ const starter = () => {
     // Set the audio volume to a reasonable level after starting the emulator (1.0 was too loud for acurate emulation)
     emu.AUDIO_VOLUME.gain.value = 0.25;
 };
+//starter();
 //emu.EMULATOR_START_BTN.onclick = starter
 
 // On python print, log to console for debugging
@@ -167,7 +168,7 @@ window.addEventListener("touchend", (e) => {
 // Added: Slightly modified to load my game from my folder/repo
 const openGame = async (gameName) => {
     let GameFileURLS = [];
-    await fetch("../ThumbBattleGameFiles.txt")
+    await fetch("GameManifest.txt")
         .then(response => response.text())
         .then(data => {
             GameFileURLS = data.split(/\r?\n/).filter(line => line.trim() !== "");

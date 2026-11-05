@@ -1,8 +1,8 @@
-import { RP2040 } from './TinyCircuits-Thumby-Code-Editor/rp2040js/dist/esm/rp2040.js';
-import { USBCDC } from './TinyCircuits-Thumby-Code-Editor/rp2040js/dist/esm/usb/cdc.js';
-import { ConsoleLogger, LogLevel } from './TinyCircuits-Thumby-Code-Editor/rp2040js/dist/esm/utils/logging.js';
-import { loadUF2 } from './TinyCircuits-Thumby-Code-Editor/js/load-uf2.js';
-import { LittleFSHelper } from './TinyCircuits-Thumby-Code-Editor/js/littlefs_helper.js';
+import { RP2040 } from 'https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/rp2040js/dist/esm/rp2040.js';
+import { USBCDC } from 'https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/rp2040js/dist/esm/usb/cdc.js';
+import { ConsoleLogger, LogLevel } from 'https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/rp2040js/dist/esm/utils/logging.js';
+import { loadUF2 } from 'https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/js/load-uf2.js';
+import { LittleFSHelper } from 'https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/js/littlefs_helper.js';
 
 
 
@@ -29,8 +29,8 @@ export class EMULATOR{
     this.mcu = undefined;                                       // Main emulator object
     this.cdc = undefined;                                       // Main usb emulator object
     this.decoder = new TextDecoder('utf-8');                    // Main emulator serial output utf8 text decoder
-    this.uf2Name = "TinyCircuits-Thumby-Code-Editor/emulator-firmware.uf2";                     // File name of emulator uf2 (custom compiled version)
-    this.bootromName = "TinyCircuits-Thumby-Code-Editor/bootrom.bin";
+    this.uf2Name = "https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/emulator-firmware.uf2";                     // File name of emulator uf2 (custom compiled version)
+    this.bootromName = "https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/bootrom.bin";
 
     this.WIDTH = 72;
     this.HEIGHT = 40;
@@ -286,18 +286,18 @@ export class EMULATOR{
 
     this.EMULATOR_DPAD_SVG = document.createElement("img");
     this.EMULATOR_DPAD_SVG.classList = "emulator_dpad_img";
-    this.EMULATOR_DPAD_SVG.src = "TinyCircuits-Thumby-Code-Editor/css/svgs/emulator/Emulator-DPAD_NORMAL.svg";
+    this.EMULATOR_DPAD_SVG.src = "https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/css/svgs/emulator/Emulator-DPAD_NORMAL.svg";
     this.EMULATOR_DPAD_SVG.title = "Keys: WASD";
     this.EMULATOR_THUMBY.appendChild(this.EMULATOR_DPAD_SVG);
 
     this.EMULATOR_B_SVG = document.createElement("img");
     this.EMULATOR_B_SVG.classList = "emulator_b_img";
-    this.EMULATOR_B_SVG.src = "TinyCircuits-Thumby-Code-Editor/css/svgs/emulator/Emulator-BTN_NORMAL.svg";
+    this.EMULATOR_B_SVG.src = "https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/css/svgs/emulator/Emulator-BTN_NORMAL.svg";
     this.EMULATOR_THUMBY.appendChild(this.EMULATOR_B_SVG);
 
     this.EMULATOR_A_SVG = document.createElement("img");
     this.EMULATOR_A_SVG.classList = "emulator_a_img";
-    this.EMULATOR_A_SVG.src = "TinyCircuits-Thumby-Code-Editor/css/svgs/emulator/Emulator-BTN_NORMAL.svg";
+    this.EMULATOR_A_SVG.src = "https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/css/svgs/emulator/Emulator-BTN_NORMAL.svg";
     this.EMULATOR_THUMBY.appendChild(this.EMULATOR_A_SVG);
 
     this.context = this.EMULATOR_CANVAS.getContext('2d', { alpha: false });
@@ -316,43 +316,43 @@ export class EMULATOR{
             pin: 4,
             press: () => {this.mcu.gpio[this.BUTTONS['w'].pin].setInputValue(false)},
             depress: () => {this.mcu.gpio[this.BUTTONS['w'].pin].setInputValue(true)},
-            animatePressed: () => {this.EMULATOR_DPAD_SVG.src = "TinyCircuits-Thumby-Code-Editor/css/svgs/emulator/Emulator-DPAD_U_PRESSED.svg";},
-            animateDepressed: () => {this.EMULATOR_DPAD_SVG.src = "TinyCircuits-Thumby-Code-Editor/css/svgs/emulator/Emulator-DPAD_NORMAL.svg";}},
+            animatePressed: () => {this.EMULATOR_DPAD_SVG.src = "https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/css/svgs/emulator/Emulator-DPAD_U_PRESSED.svg";},
+            animateDepressed: () => {this.EMULATOR_DPAD_SVG.src = "https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/css/svgs/emulator/Emulator-DPAD_NORMAL.svg";}},
 
       'a': {pressed: false,
             pin: 3,
             press: () => {this.mcu.gpio[this.BUTTONS['a'].pin].setInputValue(false)},
             depress: () => {this.mcu.gpio[this.BUTTONS['a'].pin].setInputValue(true)},
-            animatePressed: () => {this.EMULATOR_DPAD_SVG.src = "TinyCircuits-Thumby-Code-Editor/css/svgs/emulator/Emulator-DPAD_L_PRESSED.svg";},
-            animateDepressed: () => {this.EMULATOR_DPAD_SVG.src = "TinyCircuits-Thumby-Code-Editor/css/svgs/emulator/Emulator-DPAD_NORMAL.svg";}},
+            animatePressed: () => {this.EMULATOR_DPAD_SVG.src = "https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/css/svgs/emulator/Emulator-DPAD_L_PRESSED.svg";},
+            animateDepressed: () => {this.EMULATOR_DPAD_SVG.src = "https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/css/svgs/emulator/Emulator-DPAD_NORMAL.svg";}},
 
       's': {pressed: false,
             pin: 6,
             press: () => {this.mcu.gpio[this.BUTTONS['s'].pin].setInputValue(false)},
             depress: () => {this.mcu.gpio[this.BUTTONS['s'].pin].setInputValue(true)},
-            animatePressed: () => {this.EMULATOR_DPAD_SVG.src = "TinyCircuits-Thumby-Code-Editor/css/svgs/emulator/Emulator-DPAD_D_PRESSED.svg";},
-            animateDepressed: () => {this.EMULATOR_DPAD_SVG.src = "TinyCircuits-Thumby-Code-Editor/css/svgs/emulator/Emulator-DPAD_NORMAL.svg";}},
+            animatePressed: () => {this.EMULATOR_DPAD_SVG.src = "https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/css/svgs/emulator/Emulator-DPAD_D_PRESSED.svg";},
+            animateDepressed: () => {this.EMULATOR_DPAD_SVG.src = "https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/css/svgs/emulator/Emulator-DPAD_NORMAL.svg";}},
 
       'd': {pressed: false,
             pin: 5,
             press: () => {this.mcu.gpio[this.BUTTONS['d'].pin].setInputValue(false)},
             depress: () => {this.mcu.gpio[this.BUTTONS['d'].pin].setInputValue(true)},
-            animatePressed: () => {this.EMULATOR_DPAD_SVG.src = "TinyCircuits-Thumby-Code-Editor/css/svgs/emulator/Emulator-DPAD_R_PRESSED.svg";},
-            animateDepressed: () => {this.EMULATOR_DPAD_SVG.src = "TinyCircuits-Thumby-Code-Editor/css/svgs/emulator/Emulator-DPAD_NORMAL.svg";}},
+            animatePressed: () => {this.EMULATOR_DPAD_SVG.src = "https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/css/svgs/emulator/Emulator-DPAD_R_PRESSED.svg";},
+            animateDepressed: () => {this.EMULATOR_DPAD_SVG.src = "https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/css/svgs/emulator/Emulator-DPAD_NORMAL.svg";}},
 
       ',': {pressed: false,
             pin: 24,
             press: () => {this.mcu.gpio[this.BUTTONS[','].pin].setInputValue(false)},
             depress: () => {this.mcu.gpio[this.BUTTONS[','].pin].setInputValue(true)},
-            animatePressed: () => {this.EMULATOR_B_SVG.src = "TinyCircuits-Thumby-Code-Editor/css/svgs/emulator/Emulator-BTN_PRESSED.svg";},
-            animateDepressed: () => {this.EMULATOR_B_SVG.src = "TinyCircuits-Thumby-Code-Editor/css/svgs/emulator/Emulator-BTN_NORMAL.svg";}},
+            animatePressed: () => {this.EMULATOR_B_SVG.src = "https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/css/svgs/emulator/Emulator-BTN_PRESSED.svg";},
+            animateDepressed: () => {this.EMULATOR_B_SVG.src = "https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/css/svgs/emulator/Emulator-BTN_NORMAL.svg";}},
 
       '.': {pressed: false,
             pin: 27,
             press: () => {this.mcu.gpio[this.BUTTONS['.'].pin].setInputValue(false)},
             depress: () => {this.mcu.gpio[this.BUTTONS['.'].pin].setInputValue(true)},
-            animatePressed: () => {this.EMULATOR_A_SVG.src = "TinyCircuits-Thumby-Code-Editor/css/svgs/emulator/Emulator-BTN_PRESSED.svg";},
-            animateDepressed: () => {this.EMULATOR_A_SVG.src = "TinyCircuits-Thumby-Code-Editor/css/svgs/emulator/Emulator-BTN_NORMAL.svg";}},
+            animatePressed: () => {this.EMULATOR_A_SVG.src = "https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/css/svgs/emulator/Emulator-BTN_PRESSED.svg";},
+            animateDepressed: () => {this.EMULATOR_A_SVG.src = "https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/css/svgs/emulator/Emulator-BTN_NORMAL.svg";}},
     }
 
     // Make sure to remap buttons to saved rotation
@@ -497,70 +497,70 @@ export class EMULATOR{
       // console.log("0");
       this.BUTTONS['w'].pin = 4;
       this.EMULATOR_DPAD_UP_BTN.title = "Key: W";
-      this.BUTTONS['w'].animatePressed = () => {this.EMULATOR_DPAD_SVG.src = "TinyCircuits-Thumby-Code-Editor/css/svgs/emulator/Emulator-DPAD_U_PRESSED.svg";};
+      this.BUTTONS['w'].animatePressed = () => {this.EMULATOR_DPAD_SVG.src = "https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/css/svgs/emulator/Emulator-DPAD_U_PRESSED.svg";};
 
       this.BUTTONS['a'].pin = 3;
       this.EMULATOR_DPAD_LEFT_BTN.title = "Key: A";
-      this.BUTTONS['a'].animatePressed = () => {this.EMULATOR_DPAD_SVG.src = "TinyCircuits-Thumby-Code-Editor/css/svgs/emulator/Emulator-DPAD_L_PRESSED.svg";};
+      this.BUTTONS['a'].animatePressed = () => {this.EMULATOR_DPAD_SVG.src = "https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/css/svgs/emulator/Emulator-DPAD_L_PRESSED.svg";};
 
       this.BUTTONS['s'].pin = 6;
       this.EMULATOR_DPAD_DOWN_BTN.title = "Key: S";
-      this.BUTTONS['s'].animatePressed = () => {this.EMULATOR_DPAD_SVG.src = "TinyCircuits-Thumby-Code-Editor/css/svgs/emulator/Emulator-DPAD_D_PRESSED.svg";};
+      this.BUTTONS['s'].animatePressed = () => {this.EMULATOR_DPAD_SVG.src = "https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/css/svgs/emulator/Emulator-DPAD_D_PRESSED.svg";};
 
       this.BUTTONS['d'].pin = 5;
       this.EMULATOR_DPAD_RIGHT_BTN.title = "Key: D";
-      this.BUTTONS['d'].animatePressed = () => {this.EMULATOR_DPAD_SVG.src = "TinyCircuits-Thumby-Code-Editor/css/svgs/emulator/Emulator-DPAD_R_PRESSED.svg";};
+      this.BUTTONS['d'].animatePressed = () => {this.EMULATOR_DPAD_SVG.src = "https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/css/svgs/emulator/Emulator-DPAD_R_PRESSED.svg";};
     }else if(this.EMULATOR_ROTATION == 90){
       // console.log("90");
       this.BUTTONS['w'].pin = 3;
       this.EMULATOR_DPAD_LEFT_BTN.title = "Key: W";
-      this.BUTTONS['w'].animatePressed = () => {this.EMULATOR_DPAD_SVG.src = "TinyCircuits-Thumby-Code-Editor/css/svgs/emulator/Emulator-DPAD_L_PRESSED.svg";};
+      this.BUTTONS['w'].animatePressed = () => {this.EMULATOR_DPAD_SVG.src = "https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/css/svgs/emulator/Emulator-DPAD_L_PRESSED.svg";};
 
       this.BUTTONS['a'].pin = 6;
       this.EMULATOR_DPAD_DOWN_BTN.title = "Key: A";
-      this.BUTTONS['a'].animatePressed = () => {this.EMULATOR_DPAD_SVG.src = "TinyCircuits-Thumby-Code-Editor/css/svgs/emulator/Emulator-DPAD_D_PRESSED.svg";};
+      this.BUTTONS['a'].animatePressed = () => {this.EMULATOR_DPAD_SVG.src = "https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/css/svgs/emulator/Emulator-DPAD_D_PRESSED.svg";};
 
       this.BUTTONS['s'].pin = 5;
       this.EMULATOR_DPAD_RIGHT_BTN.title = "Key: S";
-      this.BUTTONS['s'].animatePressed = () => {this.EMULATOR_DPAD_SVG.src = "TinyCircuits-Thumby-Code-Editor/css/svgs/emulator/Emulator-DPAD_R_PRESSED.svg";};
+      this.BUTTONS['s'].animatePressed = () => {this.EMULATOR_DPAD_SVG.src = "https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/css/svgs/emulator/Emulator-DPAD_R_PRESSED.svg";};
 
       this.BUTTONS['d'].pin = 4;
       this.EMULATOR_DPAD_UP_BTN.title = "Key: D";
-      this.BUTTONS['d'].animatePressed = () => {this.EMULATOR_DPAD_SVG.src = "TinyCircuits-Thumby-Code-Editor/css/svgs/emulator/Emulator-DPAD_U_PRESSED.svg";};
+      this.BUTTONS['d'].animatePressed = () => {this.EMULATOR_DPAD_SVG.src = "https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/css/svgs/emulator/Emulator-DPAD_U_PRESSED.svg";};
     }else if(this.EMULATOR_ROTATION == 180){
       // console.log("180");
       this.BUTTONS['w'].pin = 6;
       this.EMULATOR_DPAD_DOWN_BTN.title = "Key: W";
-      this.BUTTONS['w'].animatePressed = () => {this.EMULATOR_DPAD_SVG.src = "TinyCircuits-Thumby-Code-Editor/css/svgs/emulator/Emulator-DPAD_D_PRESSED.svg";};
+      this.BUTTONS['w'].animatePressed = () => {this.EMULATOR_DPAD_SVG.src = "https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/css/svgs/emulator/Emulator-DPAD_D_PRESSED.svg";};
 
       this.BUTTONS['a'].pin = 5;
       this.EMULATOR_DPAD_RIGHT_BTN.title = "Key: A";
-      this.BUTTONS['a'].animatePressed = () => {this.EMULATOR_DPAD_SVG.src = "TinyCircuits-Thumby-Code-Editor/css/svgs/emulator/Emulator-DPAD_R_PRESSED.svg";};
+      this.BUTTONS['a'].animatePressed = () => {this.EMULATOR_DPAD_SVG.src = "https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/css/svgs/emulator/Emulator-DPAD_R_PRESSED.svg";};
 
       this.BUTTONS['s'].pin = 4;
       this.EMULATOR_DPAD_UP_BTN.title = "Key: S";
-      this.BUTTONS['s'].animatePressed = () => {this.EMULATOR_DPAD_SVG.src = "TinyCircuits-Thumby-Code-Editor/css/svgs/emulator/Emulator-DPAD_U_PRESSED.svg";};
+      this.BUTTONS['s'].animatePressed = () => {this.EMULATOR_DPAD_SVG.src = "https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/css/svgs/emulator/Emulator-DPAD_U_PRESSED.svg";};
 
       this.BUTTONS['d'].pin = 3;
       this.EMULATOR_DPAD_LEFT_BTN.title = "Key: D"
-      this.BUTTONS['d'].animatePressed = () => {this.EMULATOR_DPAD_SVG.src = "TinyCircuits-Thumby-Code-Editor/css/svgs/emulator/Emulator-DPAD_L_PRESSED.svg";};
+      this.BUTTONS['d'].animatePressed = () => {this.EMULATOR_DPAD_SVG.src = "https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/css/svgs/emulator/Emulator-DPAD_L_PRESSED.svg";};
     }else if(this.EMULATOR_ROTATION == 270){
       // console.log("270");
       this.BUTTONS['w'].pin = 5;
       this.EMULATOR_DPAD_RIGHT_BTN.title = "Key: W";
-      this.BUTTONS['w'].animatePressed = () => {this.EMULATOR_DPAD_SVG.src = "TinyCircuits-Thumby-Code-Editor/css/svgs/emulator/Emulator-DPAD_R_PRESSED.svg";};
+      this.BUTTONS['w'].animatePressed = () => {this.EMULATOR_DPAD_SVG.src = "https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/css/svgs/emulator/Emulator-DPAD_R_PRESSED.svg";};
 
       this.BUTTONS['a'].pin = 4;
       this.EMULATOR_DPAD_UP_BTN.title = "Key: A";
-      this.BUTTONS['a'].animatePressed = () => {this.EMULATOR_DPAD_SVG.src = "TinyCircuits-Thumby-Code-Editor/css/svgs/emulator/Emulator-DPAD_U_PRESSED.svg";};
+      this.BUTTONS['a'].animatePressed = () => {this.EMULATOR_DPAD_SVG.src = "https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/css/svgs/emulator/Emulator-DPAD_U_PRESSED.svg";};
 
       this.BUTTONS['s'].pin = 3;
       this.EMULATOR_DPAD_LEFT_BTN.title = "Key: S";
-      this.BUTTONS['s'].animatePressed = () => {this.EMULATOR_DPAD_SVG.src = "TinyCircuits-Thumby-Code-Editor/css/svgs/emulator/Emulator-DPAD_L_PRESSED.svg";};
+      this.BUTTONS['s'].animatePressed = () => {this.EMULATOR_DPAD_SVG.src = "https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/css/svgs/emulator/Emulator-DPAD_L_PRESSED.svg";};
 
       this.BUTTONS['d'].pin = 6;
       this.EMULATOR_DPAD_DOWN_BTN.title = "Key: D";
-      this.BUTTONS['d'].animatePressed = () => {this.EMULATOR_DPAD_SVG.src = "TinyCircuits-Thumby-Code-Editor/css/svgs/emulator/Emulator-DPAD_D_PRESSED.svg";};
+      this.BUTTONS['d'].animatePressed = () => {this.EMULATOR_DPAD_SVG.src = "https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/css/svgs/emulator/Emulator-DPAD_D_PRESSED.svg";};
     }
   }
 
@@ -575,13 +575,13 @@ export class EMULATOR{
   // Always animate A + B buttons separate from DPAD since can be pressed at same time
   animatePressedButtons(){
     if(this.BUTTONS['w'].pressed && this.BUTTONS['a'].pressed){
-      this.EMULATOR_DPAD_SVG.src = "TinyCircuits-Thumby-Code-Editor/css/svgs/emulator/Emulator-DPAD_UL_PRESSED.svg";
+      this.EMULATOR_DPAD_SVG.src = "https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/css/svgs/emulator/Emulator-DPAD_UL_PRESSED.svg";
     }else if(this.BUTTONS['a'].pressed && this.BUTTONS['s'].pressed){
-      this.EMULATOR_DPAD_SVG.src = "TinyCircuits-Thumby-Code-Editor/css/svgs/emulator/Emulator-DPAD_LD_PRESSED.svg";
+      this.EMULATOR_DPAD_SVG.src = "https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/css/svgs/emulator/Emulator-DPAD_LD_PRESSED.svg";
     }else if(this.BUTTONS['s'].pressed && this.BUTTONS['d'].pressed){
-      this.EMULATOR_DPAD_SVG.src = "TinyCircuits-Thumby-Code-Editor/css/svgs/emulator/Emulator-DPAD_DR_PRESSED.svg";
+      this.EMULATOR_DPAD_SVG.src = "https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/css/svgs/emulator/Emulator-DPAD_DR_PRESSED.svg";
     }else if(this.BUTTONS['d'].pressed && this.BUTTONS['w'].pressed){
-      this.EMULATOR_DPAD_SVG.src = "TinyCircuits-Thumby-Code-Editor/css/svgs/emulator/Emulator-DPAD_UR_PRESSED.svg";
+      this.EMULATOR_DPAD_SVG.src = "https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/css/svgs/emulator/Emulator-DPAD_UR_PRESSED.svg";
     }else{
       if(this.BUTTONS['w'].pressed){
         this.BUTTONS['w'].animatePressed();
@@ -748,18 +748,18 @@ export class EMULATOR{
 
   // Loads file contents from server into littlefs.wasm (library files typically, uf2 is a separate function)
   async loadServerFile(serverFilePath, serverFileName){
-    console.log("Server file loading");
+    console.log(`Server file ${serverFileName} loading`);
 
     // Get server file contents and check if OK
     let response = await fetch(serverFilePath);
     if(response.status != 200) {
-      throw new Error("Server Error");
+      throw new Error(`Server Error: ${response.status}`);
     }
         
     // Read response stream as text and use load-file.js + load-file-gen.js to make littlefs entries
     let text_data = new Uint8Array(await response.arrayBuffer());
     this.littlefsHelper.write(text_data, serverFileName);
-    console.log("Server file loaded");
+    console.log(`Server file ${serverFileName} loaded`);
   }
 
 
@@ -954,22 +954,22 @@ export class EMULATOR{
 
       if(window.setPercent) window.setPercent(50);
 
-      await this.loadServerFile("TinyCircuits-Thumby-Code-Editor/CoreThumbyFiles/lib/thumby.py", '/lib/thumby.py');
-      await this.loadServerFile("TinyCircuits-Thumby-Code-Editor/CoreThumbyFiles/lib/ssd1306.py", '/lib/ssd1306.py');
+      await this.loadServerFile("https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/CoreThumbyFiles/lib/thumby.py", '/lib/thumby.py');
+      await this.loadServerFile("https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/CoreThumbyFiles/lib/ssd1306.py", '/lib/ssd1306.py');
 
-      await this.loadServerFile("TinyCircuits-Thumby-Code-Editor/CoreThumbyFiles/lib/thumbyAudio.py", "/lib/thumbyAudio.py");
-      await this.loadServerFile("TinyCircuits-Thumby-Code-Editor/CoreThumbyFiles/lib/thumbyButton.py", "/lib/thumbyButton.py");
-      await this.loadServerFile("TinyCircuits-Thumby-Code-Editor/CoreThumbyFiles/lib/thumbyGraphics.py", "/lib/thumbyGraphics.py");
-      await this.loadServerFile("TinyCircuits-Thumby-Code-Editor/CoreThumbyFiles/lib/thumbyHardware.py", "/lib/thumbyHardware.py");
-      await this.loadServerFile("TinyCircuits-Thumby-Code-Editor/CoreThumbyFiles/lib/thumbyLink.py", "/lib/thumbyLink.py");
-      await this.loadServerFile("TinyCircuits-Thumby-Code-Editor/CoreThumbyFiles/lib/thumbySaves.py", "/lib/thumbySaves.py");
-      await this.loadServerFile("TinyCircuits-Thumby-Code-Editor/CoreThumbyFiles/lib/thumbySprite.py", "/lib/thumbySprite.py");
+      await this.loadServerFile("https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/CoreThumbyFiles/lib/thumbyAudio.py", "/lib/thumbyAudio.py");
+      await this.loadServerFile("https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/CoreThumbyFiles/lib/thumbyButton.py", "/lib/thumbyButton.py");
+      await this.loadServerFile("https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/CoreThumbyFiles/lib/thumbyGraphics.py", "/lib/thumbyGraphics.py");
+      await this.loadServerFile("https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/CoreThumbyFiles/lib/thumbyHardware.py", "/lib/thumbyHardware.py");
+      await this.loadServerFile("https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/CoreThumbyFiles/lib/thumbyLink.py", "/lib/thumbyLink.py");
+      await this.loadServerFile("https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/CoreThumbyFiles/lib/thumbySaves.py", "/lib/thumbySaves.py");
+      await this.loadServerFile("https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/CoreThumbyFiles/lib/thumbySprite.py", "/lib/thumbySprite.py");
 
-      await this.loadServerFile("TinyCircuits-Thumby-Code-Editor/CoreThumbyFiles/lib/font3x5.bin", '/lib/font3x5.bin');
-      await this.loadServerFile("TinyCircuits-Thumby-Code-Editor/CoreThumbyFiles/lib/font5x7.bin", '/lib/font5x7.bin');
-      await this.loadServerFile("TinyCircuits-Thumby-Code-Editor/CoreThumbyFiles/lib/font8x8.bin", '/lib/font8x8.bin');
-      await this.loadServerFile("TinyCircuits-Thumby-Code-Editor/CoreThumbyFiles/lib/TClogo.bin", '/lib/TClogo.bin');
-      await this.loadServerFile("TinyCircuits-Thumby-Code-Editor/CoreThumbyFiles/lib/thumbyLogo.bin", '/lib/thumbyLogo.bin');
+      await this.loadServerFile("https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/CoreThumbyFiles/lib/font3x5.bin", '/lib/font3x5.bin');
+      await this.loadServerFile("https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/CoreThumbyFiles/lib/font5x7.bin", '/lib/font5x7.bin');
+      await this.loadServerFile("https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/CoreThumbyFiles/lib/font8x8.bin", '/lib/font8x8.bin');
+      await this.loadServerFile("https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/CoreThumbyFiles/lib/TClogo.bin", '/lib/TClogo.bin');
+      await this.loadServerFile("https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/CoreThumbyFiles/lib/thumbyLogo.bin", '/lib/thumbyLogo.bin');
       
       if(window.setPercent) window.setPercent(75);
 

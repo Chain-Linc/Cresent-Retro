@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<!-- https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/ -->
+<!-- This is where the emulator files reside: https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/ -->
 
 <html>
     <head>
@@ -13,17 +13,17 @@
         <meta name="msapplication-TileColor" content="#ec3750">
 
         <title>Thumby Emulator</title>
-        <link rel="stylesheet" href="TinyCircuits-Thumby-Code-Editor/uikit-3.7.3/css/uikit-dark.css" />
-        <link rel="stylesheet" href="TinyCircuits-Thumby-Code-Editor/css/dark/main-dark.css">
-        <link rel="stylesheet" href="TinyCircuits-Thumby-Code-Editor/css/dark/emulator-dark.css">
-        <link rel="stylesheet" href="TinyCircuits-Thumby-Code-Editor/css/dark/play-emulator-dark.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/uikit-3.7.3/css/uikit-dark.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/css/dark/main-dark.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/css/dark/emulator-dark.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/css/dark/play-emulator-dark.css">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap">
         
         <!-- Replace This Before Ship-->
-        <link rel="icon" type="image/png" href="TinyCircuits-Thumby-Code-Editor/favicon.png">
+        <!--link rel="icon" type="image/png" href=""-->
         
         <style>
             .center-wrapper {
@@ -41,22 +41,50 @@
     </head>
 
     <body>
-        <div class="center-wrapper">
-                <!-- Minimal progress bar component -->
-                <div class="card sunken">
-                    <h1 class="headline" style="font-size: var(--font-5); margin-top: var(--spacing-2); text-align: center;">
-                        Loading
-                    </h1>
-                    <progress margin-top: var(--spacing-3); width: 100%; class="uk-progress" id="file" max="100" value="70">70%</progress>
+        <div style="width: 100svw; height: 100svh; background-color: rgba(0, 0, 0, 0.8);"></div>
+        <div class="center-wrapper" style="display: flex; justify-content: center; align-items: center; min-height: 50vh;"> 
+            <div class="card" style="width: 100%; max-width: 400px; padding: 2rem; text-align: center; border-radius: 12px;"> 
+                <h1 class="headline brand" style="margin-top: 0; margin-bottom: 1rem; font-size: 1.5rem; font-weight: 600;">Loading <color var="--red">Thumby Battlefield</color></h1> 
+                <!-- Container utilizing Hack Club variables via inline overrides -->
+                <div style="
+                width: 100%;
+                height: 32px; 
+                background-color: var(--sunken); 
+                border-radius: var(--radii-default); 
+                position: relative; 
+                display: flex; 
+                align-items: center; 
+                overflow: hidden;
+                ">
+                <div style="
+                    width: 75%;
+                    height: 100%; 
+                    background-color: var(--red); 
+                    border-radius: var(--radii-default) 0 0 var(--radii-default); 
+                    display: flex; 
+                    align-items: center; 
+                    justify-content: center;
+                ">
+                    <!-- Centered status text inside the bar -->
+                    <span style="
+                    color: var(--white); 
+                    font-weight: var(--font-weight-bold); 
+                    font-size: 14px; 
+                    white-space: nowrap; 
+                    padding: 0 12px;
+                    ">
+                    Files 25/100
+                    </span>
                 </div>
-            </div>
+                </div>
+
+            </div> 
         </div>
 
-        <script type="module" src="TinyCircuits-Thumby-Code-Editor/rp2040js/dist/esm/rp2040.js"></script>
-        <script src="TinyCircuits-Thumby-Code-Editor/js/ace/ace.js" type="text/javascript" charset="utf-8"></script>
-        <script src="TinyCircuits-Thumby-Code-Editor/js/ace/ext-language_tools.js"></script>
-        <script src="TinyCircuits-Thumby-Code-Editor/js/editor_wrapper.js"></script>
-        <script src="TinyCircuits-Thumby-Code-Editor/js/arcade.js"></script>
-        <script type="module" src="TinyCircuits-Thumby-Code-Editor/js/play.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/rp2040js/dist/esm/rp2040.js" type="module"></script>
+        <script src="https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/js/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/js/ace/ext-language_tools.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/js/editor_wrapper.js"></script>
+        <script src="play.js" type="module"></script>
     </body>
 </html>
