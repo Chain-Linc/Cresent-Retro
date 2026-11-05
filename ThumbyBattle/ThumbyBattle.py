@@ -3,7 +3,7 @@ import time
 import framebuf
 from sys import path
 path += "/Games/ThumbyBattle/"
-from thumbyGrayscale import display, Sprite, buttonA
+from Games.ThumbyBattle.thumbyGrayscale import display, Sprite, buttonA
 display.enableGrayscale()
 
 SCREEN_SIZE = (72, 40)
