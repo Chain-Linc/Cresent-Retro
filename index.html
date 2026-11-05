@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 
+<!-- https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/ -->
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -22,24 +24,30 @@
         
         <!-- Replace This Before Ship-->
         <link rel="icon" type="image/png" href="TinyCircuits-Thumby-Code-Editor/favicon.png">
+        
+        <style>
+            .center-wrapper {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 9999; /* Keeps it on top of other content */
+                
+                /* Your original sizing dimensions */
+                min-height: 50vh; 
+                width: 50%;       
+            }
+        </style>
     </head>
 
     <body>
         <div class="center-wrapper">
-            <div class="centered-div" style="
-                    background: var(--sheet);
-                    text-align: center;
-                    padding-top: var(--spacing-5);
-                    padding-bottom: var(--spacing-4);">
                 <!-- Minimal progress bar component -->
-                <div class="centered-div" class="container" style="margin-top: var(--spacing-5)">
-                    <h1 class="headline" style="font-size: var(--font-5); margin-top: var(--spacing-4)">
-                        Forms
+                <div class="card sunken">
+                    <h1 class="headline" style="font-size: var(--font-5); margin-top: var(--spacing-2); text-align: center;">
+                        Loading
                     </h1>
-                    <div class="card sunken">
-                        <label for="file">Loading...</label>
-                        <progress id="file" max="100" value="70">70%</progress>
-                    </div>
+                    <progress margin-top: var(--spacing-3); width: 100%; class="uk-progress" id="file" max="100" value="70">70%</progress>
                 </div>
             </div>
         </div>
