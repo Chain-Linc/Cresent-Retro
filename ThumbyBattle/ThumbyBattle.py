@@ -1,10 +1,14 @@
-import time
+print("Starting ThumbyBattle.py")
 
+import time
 import framebuf
-from sys import path
-path += "/Games/ThumbyBattle/"
-from Games.ThumbyBattle.thumbyGrayscale import display, Sprite, buttonA
+import thumby
+
+import sys
+sys.path.insert(0, '/Games/ThumbyBattle')
+from thumbyGrayscale import display, Sprite, buttonA
 display.enableGrayscale()
+print("Grayscale enabled")
 
 SCREEN_SIZE = (72, 40)
 
@@ -14,16 +18,16 @@ screenGSShading = framebuf.FrameBuffer(display.shading, *SCREEN_SIZE, framebuf.M
 screenGSBufferPallete = bytearray([0x00])
 screenGSShadingPallete = bytearray([0x00])
 screenGSShadingPalleteFrame = framebuf.FrameBuffer(screenGSShadingPallete, 1, 1, framebuf.MONO_VLSB)
-screenGSShadingPalleteFrame.set_pixel(0, 0, 1, 1, 0)
-screenGSShadingPalleteFrame.set_pixel(1, 0, 1, 1, 1)
-screenGSShadingPalleteFrame.set_pixel(2, 0, 1, 1, 2)
-screenGSShadingPalleteFrame.set_pixel(3, 0, 1, 1, 3)
+screenGSShadingPalleteFrame.pixel(0, 0, 0)
+screenGSShadingPalleteFrame.pixel(1, 0, 1)
+screenGSShadingPalleteFrame.pixel(2, 0, 2)
+screenGSShadingPalleteFrame.pixel(3, 0, 3)
 
 screenGSShadingBufferFrame = framebuf.FrameBuffer(screenGSShadingPallete, 1, 1, framebuf.MONO_VLSB)
-screenGSShadingBufferFrame.set_pixel(0, 0, 1, 1, 0)
-screenGSShadingBufferFrame.set_pixel(1, 0, 1, 1, 1)
-screenGSShadingBufferFrame.set_pixel(2, 0, 1, 1, 2)
-screenGSShadingBufferFrame.set_pixel(3, 0, 1, 1, 3)
+screenGSShadingBufferFrame.pixel(0, 0, 0)
+screenGSShadingBufferFrame.pixel(1, 0, 1)
+screenGSShadingBufferFrame.pixel(2, 0, 2)
+screenGSShadingBufferFrame.pixel(3, 0, 3)
 
 screenBuffer = bytearray(72 * 40 // 4)
 screen = framebuf.FrameBuffer(screenBuffer, *SCREEN_SIZE, framebuf.GS2_HMSB)
@@ -52,6 +56,9 @@ def updateDisplay():
 
 display.setFPS(60)
 
+thumby.audio.playBlocking(1000, 100)
+thumby.audio.playBlocking(1500, 100)
+thumby.audio.playBlocking(2000, 100)
 while True:
     t0 = time.ticks_ms()   # Get time (ms)
 

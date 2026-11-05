@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1 user-scalable=no"/>
+        
+        <link rel="stylesheet" href="https://css.hackclub.com/theme.css">
+        <link rel="stylesheet" href="https://css.hackclub.com/fonts.css">
+        <meta name="theme-color" content="#ec3750">
+        <meta name="msapplication-TileColor" content="#ec3750">
+
+        <title>Thumby Emulator</title>
+        <link rel="stylesheet" href="TinyCircuits-Thumby-Code-Editor/uikit-3.7.3/css/uikit-dark.css" />
+        <link rel="stylesheet" href="TinyCircuits-Thumby-Code-Editor/css/dark/main-dark.css">
+        <link rel="stylesheet" href="TinyCircuits-Thumby-Code-Editor/css/dark/emulator-dark.css">
+        <link rel="stylesheet" href="TinyCircuits-Thumby-Code-Editor/css/dark/play-emulator-dark.css">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap">
+        
+        <!-- Replace This Before Ship-->
+        <link rel="icon" type="image/png" href="TinyCircuits-Thumby-Code-Editor/favicon.png">
+    </head>
+
+    <body>
+        <div class="center-wrapper">
+            <div class="centered-div" style="
+                    background: var(--sheet);
+                    text-align: center;
+                    padding-top: var(--spacing-5);
+                    padding-bottom: var(--spacing-4);">
+                <!-- Minimal progress bar component -->
+                <div class="centered-div" class="container" style="margin-top: var(--spacing-5)">
+                    <h1 class="headline" style="font-size: var(--font-5); margin-top: var(--spacing-4)">
+                        Forms
+                    </h1>
+                    <div class="card sunken">
+                        <label for="file">Loading...</label>
+                        <progress id="file" max="100" value="70">70%</progress>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="module" src="TinyCircuits-Thumby-Code-Editor/rp2040js/dist/esm/rp2040.js"></script>
+        <script src="TinyCircuits-Thumby-Code-Editor/js/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="TinyCircuits-Thumby-Code-Editor/js/ace/ext-language_tools.js"></script>
+        <script src="TinyCircuits-Thumby-Code-Editor/js/editor_wrapper.js"></script>
+        <script src="TinyCircuits-Thumby-Code-Editor/js/arcade.js"></script>
+        <script type="module" src="TinyCircuits-Thumby-Code-Editor/js/play.js"></script>
+    </body>
+</html>
