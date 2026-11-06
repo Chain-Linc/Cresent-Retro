@@ -44,5 +44,7 @@ Oh man those explosions are crazy
 * Tanks: Up/Down: change target
 * Tanks: A fire
 
+---
+
 ### 🧃 Juice 💥
 I made this with 10+ explosions 10+ vehicles with dozens of animations for muzzle flashing
