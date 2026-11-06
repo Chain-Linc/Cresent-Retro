@@ -1,5 +1,8 @@
 # Thumby Battlefield
 
+BTW this still **very** much incomplete stay tuned until I finish it
+
+
 <img src="https://tinycircuits.com/cdn/shop/products/clearthumby1065x1065-min.jpg" width="30%">
 
 A arcade game for the **Thumby**—the miniature playable keychain arcade console. 
