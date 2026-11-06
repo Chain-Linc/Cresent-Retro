@@ -7,10 +7,12 @@ import { LittleFSHelper } from 'https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCir
 
 
 export class EMULATOR{
-  constructor(_container, state, _EDITORS){
+  constructor(_container, state, _EDITORS, statusBar) {
     this.EDITORS = _EDITORS;
     this._container = _container;
     this._container.setState(state);
+    this.statusBar = statusBar;
+    //this.statusBar.registerCount(14);
 
     // Used for turning strigns into bytes for writing to emulated flash through emscripten littlefs
     this.FILE_ENCODER = new TextEncoder();
@@ -182,7 +184,7 @@ export class EMULATOR{
     this.EMULATOR_ROTATE_BTN.title = "Rotate Thumby 90 degrees clockwise";
     this.EMULATOR_ROTATE_BTN.textContent = "\u21bb";
     this.EMULATOR_ROTATE_BTN.onclick = () => {
-      this.EMULATOR_ROTATION = this.EMULATOR_ROTATION + 90;
+    this.EMULATOR_ROTATION = this.EMULATOR_ROTATION + 90;
 
       if(this.EMULATOR_ROTATION >= 360){
         this.EMULATOR_ROTATION = 0;
@@ -218,7 +220,7 @@ export class EMULATOR{
 
     this.EMULATOR_FS_DIV = document.createElement("div");
     this.EMULATOR_FS_DIV.classList = "emulator_fs_slide_div";
-    //this.EMULATOR_BODY_DIV.appendChild(this.EMULATOR_FS_DIV);
+    this.EMULATOR_BODY_DIV.appendChild(this.EMULATOR_FS_DIV);
     this.EMULATOR_FS_DIV.onmouseenter = () => {
       this.EMULATOR_FS_DIV.style.display = "flex";
     }
@@ -254,7 +256,7 @@ export class EMULATOR{
       link.href = this.EMULATOR_CANVAS.toDataURL();
       link.click();
     };
-    //this.EMULATOR_BODY_DIV.appendChild(this.EMULATOR_SCREENSHOT_BTN);
+    this.EMULATOR_BODY_DIV.appendChild(this.EMULATOR_SCREENSHOT_BTN);
 
 
     this.RECORDING = false;
@@ -264,7 +266,7 @@ export class EMULATOR{
     this.EMULATOR_TOGGLE_RECORD_BTN.title = "Toggle recording of emulator to .webm file";
     this.EMULATOR_TOGGLE_RECORD_BTN.setAttribute("uk-icon", "video-camera");
     this.EMULATOR_TOGGLE_RECORD_BTN.onclick = () => {this.toggleRecording()};
-    //this.EMULATOR_BODY_DIV.appendChild(this.EMULATOR_TOGGLE_RECORD_BTN);
+    this.EMULATOR_BODY_DIV.appendChild(this.EMULATOR_TOGGLE_RECORD_BTN);
 
 
     // <button title="Opens link in new tab" onclick="window.open('https://tinycircuits.com/blogs/thumby/building-a-game-with-the-thumby-ide', '_blank');" class="uk-button-default uk-link-text uk-width-1-1 uk-height-1-1">Tutorial</button>
@@ -281,7 +283,7 @@ export class EMULATOR{
     this.EMULATOR_FPS_DISPLAY.title = "Current frames per second that the canvas is being painted at\nAveraged over the last 5 frames times";
     this.EMULATOR_FPS_DISPLAY.style.cursor = "initial";
     this.EMULATOR_FPS_DISPLAY.innerText = "0FPS";
-    //this.EMULATOR_BODY_DIV.appendChild(this.EMULATOR_FPS_DISPLAY);
+    this.EMULATOR_BODY_DIV.appendChild(this.EMULATOR_FPS_DISPLAY);
 
 
     this.EMULATOR_DPAD_SVG = document.createElement("img");
@@ -615,6 +617,8 @@ export class EMULATOR{
       this.stopEmulator();
     }else if(event.key == 'q' && event.ctrlKey == true){
       this.startEmulator();
+    }else if(event.key == 'r' && event.altKey == true){
+      this.toggleRecording();
     }
   }
 
@@ -857,9 +861,11 @@ export class EMULATOR{
         this.onData("\nRestarting emulator, new main file...\n");
       }
       this.MAIN_FILE = mainFile;
-      this.restartEmulator();
+      await this.restartEmulator();
       return;
     }
+
+    this.statusBar.registerCount(20);
 
     // Reset these so FPS is calculated correctly next time
     this.resetFPS();
@@ -954,39 +960,47 @@ export class EMULATOR{
 
       if(window.setPercent) window.setPercent(50);
 
-      await this.loadServerFile("https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/CoreThumbyFiles/lib/thumby.py", '/lib/thumby.py');
-      await this.loadServerFile("https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/CoreThumbyFiles/lib/ssd1306.py", '/lib/ssd1306.py');
+      for (const [path, name] of
+        [
+          ["https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/CoreThumbyFiles/lib/thumby.py", '/lib/thumby.py'],
+          ["https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/CoreThumbyFiles/lib/ssd1306.py", '/lib/ssd1306.py'],
 
-      await this.loadServerFile("https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/CoreThumbyFiles/lib/thumbyAudio.py", "/lib/thumbyAudio.py");
-      await this.loadServerFile("https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/CoreThumbyFiles/lib/thumbyButton.py", "/lib/thumbyButton.py");
-      await this.loadServerFile("https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/CoreThumbyFiles/lib/thumbyGraphics.py", "/lib/thumbyGraphics.py");
-      await this.loadServerFile("https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/CoreThumbyFiles/lib/thumbyHardware.py", "/lib/thumbyHardware.py");
-      await this.loadServerFile("https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/CoreThumbyFiles/lib/thumbyLink.py", "/lib/thumbyLink.py");
-      await this.loadServerFile("https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/CoreThumbyFiles/lib/thumbySaves.py", "/lib/thumbySaves.py");
-      await this.loadServerFile("https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/CoreThumbyFiles/lib/thumbySprite.py", "/lib/thumbySprite.py");
+          ["https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/CoreThumbyFiles/lib/thumbyAudio.py", "/lib/thumbyAudio.py"],
+          ["https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/CoreThumbyFiles/lib/thumbyButton.py", "/lib/thumbyButton.py"],
+          ["https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/CoreThumbyFiles/lib/thumbyGraphics.py", "/lib/thumbyGraphics.py"],
+          ["https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/CoreThumbyFiles/lib/thumbyHardware.py", "/lib/thumbyHardware.py"],
+          ["https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/CoreThumbyFiles/lib/thumbyLink.py", "/lib/thumbyLink.py"],
+          ["https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/CoreThumbyFiles/lib/thumbySaves.py", "/lib/thumbySaves.py"],
+          ["https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/CoreThumbyFiles/lib/thumbySprite.py", "/lib/thumbySprite.py"],
 
-      await this.loadServerFile("https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/CoreThumbyFiles/lib/font3x5.bin", '/lib/font3x5.bin');
-      await this.loadServerFile("https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/CoreThumbyFiles/lib/font5x7.bin", '/lib/font5x7.bin');
-      await this.loadServerFile("https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/CoreThumbyFiles/lib/font8x8.bin", '/lib/font8x8.bin');
-      await this.loadServerFile("https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/CoreThumbyFiles/lib/TClogo.bin", '/lib/TClogo.bin');
-      await this.loadServerFile("https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/CoreThumbyFiles/lib/thumbyLogo.bin", '/lib/thumbyLogo.bin');
-      
+          ["https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/CoreThumbyFiles/lib/font3x5.bin", '/lib/font3x5.bin'],
+          ["https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/CoreThumbyFiles/lib/font5x7.bin", '/lib/font5x7.bin'],
+          ["https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/CoreThumbyFiles/lib/font8x8.bin", '/lib/font8x8.bin'],
+          ["https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/CoreThumbyFiles/lib/TClogo.bin", '/lib/TClogo.bin'],
+          ["https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/CoreThumbyFiles/lib/thumbyLogo.bin", '/lib/thumbyLogo.bin']
+      ]){
+        await this.loadServerFile(path, name);
+        this.statusBar.loaded(1);
+      }
       if(window.setPercent) window.setPercent(75);
 
       // Start the emulator
       this.mcu.PC = 0x10000000;
 
       this.littlefsHelper.unmount();
+      this.statusBar.loaded(1);
       this.mcu.start();
-    }else{
+    } else {
       if(this.cdc) this.cdc.sendSerialByte('\x03'.charCodeAt(0));
       this.mcu.stop();  // Pause the emulator
+      this.statusBar.loaded(1);
 
       if(window.setPercent) window.setPercent(10);
 
       this.littlefsHelper.mount();
       await this.uploadEditorFiles();
       this.littlefsHelper.unmount();
+      this.statusBar.loaded(15);
 
       this.mcu.start(); // Start it again
 
@@ -1002,5 +1016,7 @@ export class EMULATOR{
 
     // Show the emulator (un-hide)
     this.EMULATOR_CANVAS.style.display = "block";
+
+    return 1;
   }
 }

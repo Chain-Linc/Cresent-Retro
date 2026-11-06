@@ -1,7 +1,12 @@
 import { EMULATOR } from "./emulator_wrapper.js";
+import { STATUS_BAR } from './status_bar.js';
 
 // Set the game to my game
 const game = "ThumbyBattle";
+const startGameBtn = document.getElementById("start-game-btn");
+
+const statusBar = new STATUS_BAR();
+statusBar.registerCount(5);
 
 // React stub container mocking GoldernLayout for compatibility
 class Container {
@@ -16,12 +21,14 @@ hidden.style.display = 'none';
 conta._layoutManager = hidden;
 conta._layoutManager.on = (a, b) => {};
 
+statusBar.loaded(1);
+
 // Start warming up the emulator
 var EDITORS = [];
 var MAIN_EDITOR = null;
 var GAME_EDITOR = null;
-const emu = await new EMULATOR(conta, {}, EDITORS);
-const starter = () => {
+const emu = await new EMULATOR(conta, {}, EDITORS, statusBar);
+const initor = () => {
     //loading.style.display = "initial"
     if (MAIN_EDITOR && GAME_EDITOR) {
         GAME_EDITOR.state.mainChecked = false;
@@ -29,17 +36,31 @@ const starter = () => {
         MAIN_EDITOR.state.mainChecked = true;
         MAIN_EDITOR.MAIN_EMU_CHECKBOX.checked = true;
     }
-    emu.startEmulator();
-
-    // Set the audio volume to a reasonable level after starting the emulator (1.0 was too loud for acurate emulation)
-    emu.AUDIO_VOLUME.gain.value = 0.25;
+    statusBar.readyToStartGame();
 };
+
+statusBar.loaded(1);
+
+const starter = async () => {
+    statusBar.showStatusBar();
+    await emu.startEmulator();
+    console.log(`Emulator started with return code: ${i}`);
+    statusBar.startGame();
+}
+startGameBtn.addEventListener("click", () => {
+    starter();
+});
 //starter();
 //emu.EMULATOR_START_BTN.onclick = starter
 
 // On python print, log to console for debugging
 emu.onData = async (data) => {
     console.log(data);
+    if (data.includes("LOADED COMPLETE")) {
+        statusBar.startGame();
+    } else if (data.includes("LOADED")) {
+        statusBar.loaded(1);
+    }
 };
 
 // Setup up delaying audio until after unmute
@@ -65,7 +86,7 @@ const muter = () => {
     emu.AUDIO_VOLUME.gain.value = 0.25;
   }
 };
-muter();
+
 //emu.EMULATOR_MUTE_BTN.onclick = muter;
 
 // Hide unused elements
@@ -101,6 +122,8 @@ document.addEventListener("DOMContentLoaded", sizer);
 emu.adjustSize = sizer;
 emu.adjustCanvas = sizer;
 sizer();
+
+statusBar.loaded(1);
 
 // Touch screen controls
 window.addEventListener("touchstart", (e) => {
@@ -165,7 +188,6 @@ window.addEventListener("touchend", (e) => {
     }
 });
 
-// Added: Slightly modified to load my game from my folder/repo
 const openGame = async (gameName) => {
     let GameFileURLS = [];
     await fetch("GameManifest.txt")
@@ -203,14 +225,13 @@ const openGame = async (gameName) => {
 
             console.log(`Loaded file: ${filePath}`);
         });
+        statusBar.loaded(1);
     }
 
     console.log(`Game ${gameName} loaded!`);
+
+    statusBar.readyToStartGame();
 }
 
-// Added: Replaced this part so the emulator will load my game instead of menu
 conta.element = hidden;
 await openGame(game);
-
-// Load the emulator (delay for chonky files to settle e.g: Fireplace)
-setTimeout(() => {starter()}, 2000);

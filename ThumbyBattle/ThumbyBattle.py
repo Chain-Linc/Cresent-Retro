@@ -1,14 +1,19 @@
-print("Starting ThumbyBattle.py")
-
+print("FILE: Starting ThumbyBattle.py")
+print("LOADED")
 import time
+print("LOADED")
 import framebuf
+print("LOADED")
 import thumby
+print("LOADED")
 
 import sys
 sys.path.insert(0, '/Games/ThumbyBattle')
 from thumbyGrayscale import display, Sprite, buttonA
 display.enableGrayscale()
-print("Grayscale enabled")
+print("LOADED COMPLETE")
+print("FILE: Grayscale imported and enabled")
+
 
 SCREEN_SIZE = (72, 40)
 
@@ -42,7 +47,7 @@ screen.fill_rect(10, 0, 10, 20, 1)
 screen.fill_rect(20, 0, 10, 20, 2)
 screen.fill_rect(30, 0, 10, 20, 3)
 
-print(screenBuffer)
+#print(screenBuffer)
 
 battleFieldBuffer = bytearray(72 * 40 // 8)
 battleFieldFrame = framebuf.FrameBuffer(battleFieldBuffer, 72, 40, framebuf.MONO_VLSB)
