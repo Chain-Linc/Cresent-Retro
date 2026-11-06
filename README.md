@@ -35,14 +35,15 @@ Oh man those explosions are crazy
 * **B**: Back
 
 #### Game
-* **Arrows**: Move/Aim (with some exceptions)
-* **A Button**: Fire (Remeber you can hold any button down for rapid fire action)
-* **B Button**: Sencondary Fire
-* **A+B**: Pause
+* **Arrows** Move/Aim (with some exceptions)
+* **A Button** Fire (Remeber you can hold any button down for rapid fire action)
+* **B Button** Sencondary Fire
+* **A+B** Pause
 
 #### Tanks
-* Tanks: Up/Down: change target
-* Tanks: A fire
+* **Up/Down**: Change Target
+* **Left/Right** Move
+* **A**: Fire
 
 ---
 
