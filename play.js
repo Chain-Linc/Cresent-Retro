@@ -94,12 +94,12 @@ const muter = () => {
 
 // Layout
 const sizer = () => {
-    emu.EMULATOR_THUMBY.style.height = "75%";
+    emu.EMULATOR_THUMBY.style.height = "95%";
     emu.EMULATOR_THUMBY.style.width = "auto";
     emu.EMULATOR_THUMBY.style.left = `${(emu.EMULATOR_BODY_DIV.clientWidth-emu.EMULATOR_THUMBY.clientWidth)/2}px`;
     emu.EMULATOR_CANVAS.style.width = "100%";
     emu.EMULATOR_CANVAS.style.height = "100%";
-    const scale = emu.EMULATOR_BODY_DIV.clientHeight/emu.HEIGHT/7.154;
+    const scale = (emu.EMULATOR_BODY_DIV.clientHeight/emu.HEIGHT)*0.1771;
     emu.EMULATOR_CANVAS.width = emu.WIDTH * scale;
     emu.EMULATOR_CANVAS.height = emu.HEIGHT * scale;
     emu.context.translate(emu.WIDTH*scale/2, emu.HEIGHT*scale/2);

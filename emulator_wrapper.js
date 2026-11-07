@@ -66,35 +66,36 @@ export class EMULATOR{
     this.EMULATOR_CANVAS.width = this.WIDTH;
     this.EMULATOR_CANVAS.height = this.HEIGHT;
 
-
     this.EMULATOR_DPAD_UP_BTN = document.createElement("button");
-    this.EMULATOR_DPAD_UP_BTN.style.all = "revert"; 
     this.EMULATOR_DPAD_UP_BTN.classList.add("emulator_dpad_up_btn");
-    this.EMULATOR_DPAD_UP_BTN.style.all = "";
-    this.EMULATOR_DPAD_UP_BTN.style.all = "initial";  
+    this.EMULATOR_DPAD_UP_BTN.style.borderRadius = "0";
+    this.EMULATOR_DPAD_UP_BTN.style.boxShadow = "none";
     this.EMULATOR_DPAD_UP_BTN.onmousedown = () => {this.handleKeyDown({key: 'w'})};
     this.EMULATOR_DPAD_UP_BTN.onmouseup = () => {this.handleKeyUp({key: 'w'})};
     this.EMULATOR_DPAD_UP_BTN.title = "Key: W";
     this.EMULATOR_THUMBY.appendChild(this.EMULATOR_DPAD_UP_BTN);
 
     this.EMULATOR_DPAD_LEFT_BTN = document.createElement("button");
-    this.EMULATOR_DPAD_LEFT_BTN.className = ""; 
     this.EMULATOR_DPAD_LEFT_BTN.classList.add("emulator_dpad_left_btn");
+    this.EMULATOR_DPAD_LEFT_BTN.style.borderRadius = "0";
+    this.EMULATOR_DPAD_LEFT_BTN.style.boxShadow = "none";
     this.EMULATOR_DPAD_LEFT_BTN.onmousedown = () => {this.handleKeyDown({key: 'a'})};
     this.EMULATOR_DPAD_LEFT_BTN.onmouseup = () => {this.handleKeyUp({key: 'a'})};
     this.EMULATOR_DPAD_LEFT_BTN.title = "Key: A";
     this.EMULATOR_THUMBY.appendChild(this.EMULATOR_DPAD_LEFT_BTN);
 
     this.EMULATOR_DPAD_DOWN_BTN = document.createElement("button");
-    this.EMULATOR_DPAD_DOWN_BTN.className = ""; 
     this.EMULATOR_DPAD_DOWN_BTN.classList.add("emulator_dpad_down_btn");
+    this.EMULATOR_DPAD_DOWN_BTN.style.borderRadius = "0";
+    this.EMULATOR_DPAD_DOWN_BTN.style.boxShadow = "none";
     this.EMULATOR_DPAD_DOWN_BTN.onmousedown = () => {this.handleKeyDown({key: 's'})};
     this.EMULATOR_DPAD_DOWN_BTN.onmouseup = () => {this.handleKeyUp({key: 's'})};
     this.EMULATOR_DPAD_DOWN_BTN.title = "Key: S";
     this.EMULATOR_THUMBY.appendChild(this.EMULATOR_DPAD_DOWN_BTN);
 
     this.EMULATOR_DPAD_RIGHT_BTN = document.createElement("button");
-    this.EMULATOR_DPAD_RIGHT_BTN.className = ""; 
+    this.EMULATOR_DPAD_RIGHT_BTN.style.borderRadius = "0";
+    this.EMULATOR_DPAD_RIGHT_BTN.style.boxShadow = "none";
     this.EMULATOR_DPAD_RIGHT_BTN.classList.add("emulator_dpad_right_btn");
     this.EMULATOR_DPAD_RIGHT_BTN.onmousedown = () => {this.handleKeyDown({key: 'd'})};
     this.EMULATOR_DPAD_RIGHT_BTN.onmouseup = () => {this.handleKeyUp({key: 'd'})};
@@ -102,16 +103,18 @@ export class EMULATOR{
     this.EMULATOR_THUMBY.appendChild(this.EMULATOR_DPAD_RIGHT_BTN);
 
     this.EMULATOR_B_BTN = document.createElement("button");
-    this.EMULATOR_B_BTN.className = ""; 
     this.EMULATOR_B_BTN.classList.add("emulator_b_btn");
+    this.EMULATOR_B_BTN.style.borderRadius = "0";
+    this.EMULATOR_B_BTN.style.boxShadow = "none";
     this.EMULATOR_B_BTN.onmousedown = () => {this.handleKeyDown({key: ','})};
     this.EMULATOR_B_BTN.onmouseup = () => {this.handleKeyUp({key: ','})};
     this.EMULATOR_B_BTN.title = "B Key: , (comma)";
     this.EMULATOR_THUMBY.appendChild(this.EMULATOR_B_BTN);
 
     this.EMULATOR_A_BTN = document.createElement("button");
-    this.EMULATOR_A_BTN.className = ""; 
     this.EMULATOR_A_BTN.classList.add("emulator_a_btn");
+    this.EMULATOR_A_BTN.style.borderRadius = "0";
+    this.EMULATOR_A_BTN.style.boxShadow = "none";
     this.EMULATOR_A_BTN.onmousedown = () => {this.handleKeyDown({key: '.'})};
     this.EMULATOR_A_BTN.onmouseup = () => {this.handleKeyUp({key: '.'})};
     this.EMULATOR_A_BTN.title = "A Key: . (period)";
