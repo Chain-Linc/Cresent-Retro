@@ -17,39 +17,33 @@ print("LOADED_COMPLETE")
 print("FILE: Grayscale imported and enabled")
 
 
+
+
 SCREEN_SIZE = (72, 40)
 
-screenGSBuffer = framebuf.FrameBuffer(display.buffer, *SCREEN_SIZE, framebuf.MONO_VLSB)
-screenGSShading = framebuf.FrameBuffer(display.shading, *SCREEN_SIZE, framebuf.MONO_VLSB)
-
-screenGSBufferPallete = bytearray([0x00])
-screenGSShadingPallete = bytearray([0x00])
-screenGSShadingPalleteFrame = framebuf.FrameBuffer(screenGSShadingPallete, 1, 1, framebuf.MONO_VLSB)
-screenGSShadingPalleteFrame.pixel(0, 0, 0)
-screenGSShadingPalleteFrame.pixel(1, 0, 1)
-screenGSShadingPalleteFrame.pixel(2, 0, 2)
-screenGSShadingPalleteFrame.pixel(3, 0, 3)
-
-screenGSShadingBufferFrame = framebuf.FrameBuffer(screenGSShadingPallete, 1, 1, framebuf.MONO_VLSB)
-screenGSShadingBufferFrame.pixel(0, 0, 0)
-screenGSShadingBufferFrame.pixel(1, 0, 1)
-screenGSShadingBufferFrame.pixel(2, 0, 2)
-screenGSShadingBufferFrame.pixel(3, 0, 3)
+screenGSL1Buffer = framebuf.FrameBuffer(display.buffer, *SCREEN_SIZE, framebuf.MONO_VLSB)
+screenGSL2Buffer = framebuf.FrameBuffer(display.shading, *SCREEN_SIZE, framebuf.MONO_VLSB)
+screenGSL1PalleteBuffer = framebuf.FrameBuffer(bytearray(1), 4, 1, framebuf.MONO_VLSB)
+screenGSL2PalleteBuffer = framebuf.FrameBuffer(bytearray(1), 4, 1, framebuf.MONO_VLSB)
+# | Layer 1 | Layer 2 | Colour
+# | 0       | 0       | Black
+# | 0       | 1       | Dark gray
+# | 1       | 1       | Light gray
+# | 1       | 0       | White
+screenGSL1PalleteBuffer.pixel(2, 0, 1)
+screenGSL1PalleteBuffer.pixel(3, 0, 1)
+screenGSL2PalleteBuffer.pixel(1, 0, 1)
+screenGSL2PalleteBuffer.pixel(2, 0, 1)
 
 screenBuffer = bytearray(72 * 40 // 4)
 screen = framebuf.FrameBuffer(screenBuffer, *SCREEN_SIZE, framebuf.GS2_HMSB)
 
-screen.pixel(0, 0, 0)
-screen.pixel(1, 0, 1)
-screen.pixel(2, 0, 2)
-screen.pixel(3, 0, 3)
+screen.fill_rect(0, 0, 20, 22, 3)
 
-screen.fill_rect(0, 0, 10, 20, 0)
-screen.fill_rect(10, 0, 10, 20, 1)
-screen.fill_rect(20, 0, 10, 20, 2)
-screen.fill_rect(30, 0, 10, 20, 3)
-
-#print(screenBuffer)
+screen.fill_rect(0, 0, 8, 20, 0)
+screen.fill_rect(10, 0, 8, 20, 1)
+screen.fill_rect(20, 0, 8, 20, 2)
+screen.fill_rect(30, 0, 8, 20, 3)
 
 battleFieldBuffer = bytearray(72 * 40 // 8)
 battleFieldFrame = framebuf.FrameBuffer(battleFieldBuffer, 72, 40, framebuf.MONO_VLSB)
@@ -57,8 +51,8 @@ battleFieldFrame.fill_rect(0, 20, 72, 20, 1)
 battleFieldFrame.fill_rect(0, 0, 72, 20, 0)
 
 def updateDisplay():
-    screenGSBuffer.blit(screen, 0, 0, -1, screenGSBufferPallete)
-    screenGSShading.blit(screen, 0, 0, -1, screenGSShadingPallete)
+    screenGSL1Buffer.blit(screen, 0, 0, -1, screenGSL1PalleteBuffer)
+    screenGSL2Buffer.blit(screen, 0, 0, -1, screenGSL2PalleteBuffer)
     display.update()
 
 display.setFPS(60)

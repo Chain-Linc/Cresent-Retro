@@ -36,6 +36,15 @@ export class STATUS_BAR {
         this.startGameBtn.style.display = "flex";
     }
 
+    loadingGame() {
+        this.totalFiles = 0;
+        this.currentFileIndex = 0;
+        this.centerWrapper.style.display = "flex";
+        this.background.style.display = "flex";
+        this.statusBar.style.display = "flex";
+        this.startGameBtn.style.display = "none";        
+    }
+
     showStatusBar() {
         this.statusBar.style.display = "flex";
         this.startGameBtn.style.display = "none";

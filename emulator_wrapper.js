@@ -620,15 +620,13 @@ export class EMULATOR{
 
   // Handle special key presses (esc) and normal ones
   handleKeyDown = (event) => {
-    if(this.BUTTONS[event.key] && this.BUTTONS[event.key].pressed == false){
+    if (this.BUTTONS[event.key] && this.BUTTONS[event.key].pressed == false){
       this.BUTTONS[event.key].pressed = true
       this.BUTTONS[event.key].press();
       this.animatePressedButtons();
-    }else if(event.key == "Escape"){
+    } else if(event.key == "Escape"){
       this.stopEmulator();
-    }else if(event.key == 'q' && event.ctrlKey == true){
-      this.startEmulator();
-    }else if(event.key == 'r' && event.altKey == true){
+    } else if(event.key == 'R' && event.shiftKey == true){
       this.toggleRecording();
     }
   }
@@ -847,9 +845,10 @@ export class EMULATOR{
   }
 
 
-  restartEmulator(){
-    this.stopEmulator();
-    this.startEmulator();
+  async restartEmulator(){
+    await this.stopEmulator();
+    await this.startEmulator();
+    return;
   }
 
 
@@ -876,7 +875,7 @@ export class EMULATOR{
       return;
     }
 
-    this.statusBar.registerCount(22);
+    this.statusBar.registerCount(24);
 
     // Reset these so FPS is calculated correctly next time
     this.resetFPS();
@@ -970,7 +969,7 @@ export class EMULATOR{
       await this.uploadEditorFiles();
 
       if(window.setPercent) window.setPercent(50);
-
+      
       for (const [path, name] of
         [
           ["https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/CoreThumbyFiles/lib/thumby.py", '/lib/thumby.py'],

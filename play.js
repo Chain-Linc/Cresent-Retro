@@ -124,9 +124,6 @@ statusBar.loaded(1);
 window.addEventListener("touchstart", (e) => {
     for (let i = 0; i < e.changedTouches.length; i++) {
         switch(e.changedTouches[i].target){
-            case buyme:
-                buyme.triggerHandler("click");
-                break;
             case emu.EMULATOR_STOP_BTN:
                 emu.EMULATOR_STOP_BTN.triggerHandler("click");
                 break;
@@ -183,7 +180,7 @@ window.addEventListener("touchend", (e) => {
     }
 });
 
-const openGame = async (gameName) => {
+const loadGameFiles = async (gameName) => {
     let GameFileURLS = [];
     await fetch("GameManifest.txt")
         .then(response => response.text())
@@ -224,9 +221,17 @@ const openGame = async (gameName) => {
     }
 
     console.log(`Game ${gameName} loaded!`);
-
-    statusBar.readyToStartGame();
 }
 
+window.addEventListener('keydown', async (event) =>  {
+  if (event.shiftKey && event.key.toLowerCase() === 'q') {
+    statusBar.loadingGame();
+    loadGameFiles(game);
+    emu.restartEmulator();
+  }
+});
+
+
 conta.element = hidden;
-await openGame(game);
+await loadGameFiles(game);
+statusBar.readyToStartGame();
