@@ -1,17 +1,19 @@
 print("FILE: Starting ThumbyBattle.py")
-print("LOADED")
+print("LOADED: ThumbyBattle.py Started")
 import time
-print("LOADED")
+print("LOADED: Time Imported")
 import framebuf
-print("LOADED")
+print("LOADED: Framebuf Imported")
 import thumby
-print("LOADED")
+print("LOADED: Thumby Imported")
 
 import sys
+print("LOADED: Sys Imported")
 sys.path.insert(0, '/Games/ThumbyBattle')
 from thumbyGrayscale import display, Sprite, buttonA
+print("LOADED: Thumby Grayscale Imported")
 display.enableGrayscale()
-print("LOADED COMPLETE")
+print("LOADED_COMPLETE")
 print("FILE: Grayscale imported and enabled")
 
 

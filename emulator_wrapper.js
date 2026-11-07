@@ -68,13 +68,17 @@ export class EMULATOR{
 
 
     this.EMULATOR_DPAD_UP_BTN = document.createElement("button");
+    this.EMULATOR_DPAD_UP_BTN.style.all = "revert"; 
     this.EMULATOR_DPAD_UP_BTN.classList.add("emulator_dpad_up_btn");
+    this.EMULATOR_DPAD_UP_BTN.style.all = "";
+    this.EMULATOR_DPAD_UP_BTN.style.all = "initial";  
     this.EMULATOR_DPAD_UP_BTN.onmousedown = () => {this.handleKeyDown({key: 'w'})};
     this.EMULATOR_DPAD_UP_BTN.onmouseup = () => {this.handleKeyUp({key: 'w'})};
     this.EMULATOR_DPAD_UP_BTN.title = "Key: W";
     this.EMULATOR_THUMBY.appendChild(this.EMULATOR_DPAD_UP_BTN);
 
     this.EMULATOR_DPAD_LEFT_BTN = document.createElement("button");
+    this.EMULATOR_DPAD_LEFT_BTN.className = ""; 
     this.EMULATOR_DPAD_LEFT_BTN.classList.add("emulator_dpad_left_btn");
     this.EMULATOR_DPAD_LEFT_BTN.onmousedown = () => {this.handleKeyDown({key: 'a'})};
     this.EMULATOR_DPAD_LEFT_BTN.onmouseup = () => {this.handleKeyUp({key: 'a'})};
@@ -82,6 +86,7 @@ export class EMULATOR{
     this.EMULATOR_THUMBY.appendChild(this.EMULATOR_DPAD_LEFT_BTN);
 
     this.EMULATOR_DPAD_DOWN_BTN = document.createElement("button");
+    this.EMULATOR_DPAD_DOWN_BTN.className = ""; 
     this.EMULATOR_DPAD_DOWN_BTN.classList.add("emulator_dpad_down_btn");
     this.EMULATOR_DPAD_DOWN_BTN.onmousedown = () => {this.handleKeyDown({key: 's'})};
     this.EMULATOR_DPAD_DOWN_BTN.onmouseup = () => {this.handleKeyUp({key: 's'})};
@@ -89,6 +94,7 @@ export class EMULATOR{
     this.EMULATOR_THUMBY.appendChild(this.EMULATOR_DPAD_DOWN_BTN);
 
     this.EMULATOR_DPAD_RIGHT_BTN = document.createElement("button");
+    this.EMULATOR_DPAD_RIGHT_BTN.className = ""; 
     this.EMULATOR_DPAD_RIGHT_BTN.classList.add("emulator_dpad_right_btn");
     this.EMULATOR_DPAD_RIGHT_BTN.onmousedown = () => {this.handleKeyDown({key: 'd'})};
     this.EMULATOR_DPAD_RIGHT_BTN.onmouseup = () => {this.handleKeyUp({key: 'd'})};
@@ -96,6 +102,7 @@ export class EMULATOR{
     this.EMULATOR_THUMBY.appendChild(this.EMULATOR_DPAD_RIGHT_BTN);
 
     this.EMULATOR_B_BTN = document.createElement("button");
+    this.EMULATOR_B_BTN.className = ""; 
     this.EMULATOR_B_BTN.classList.add("emulator_b_btn");
     this.EMULATOR_B_BTN.onmousedown = () => {this.handleKeyDown({key: ','})};
     this.EMULATOR_B_BTN.onmouseup = () => {this.handleKeyUp({key: ','})};
@@ -103,6 +110,7 @@ export class EMULATOR{
     this.EMULATOR_THUMBY.appendChild(this.EMULATOR_B_BTN);
 
     this.EMULATOR_A_BTN = document.createElement("button");
+    this.EMULATOR_A_BTN.className = ""; 
     this.EMULATOR_A_BTN.classList.add("emulator_a_btn");
     this.EMULATOR_A_BTN.onmousedown = () => {this.handleKeyDown({key: '.'})};
     this.EMULATOR_A_BTN.onmouseup = () => {this.handleKeyUp({key: '.'})};
@@ -220,7 +228,7 @@ export class EMULATOR{
 
     this.EMULATOR_FS_DIV = document.createElement("div");
     this.EMULATOR_FS_DIV.classList = "emulator_fs_slide_div";
-    this.EMULATOR_BODY_DIV.appendChild(this.EMULATOR_FS_DIV);
+    //this.EMULATOR_BODY_DIV.appendChild(this.EMULATOR_FS_DIV);
     this.EMULATOR_FS_DIV.onmouseenter = () => {
       this.EMULATOR_FS_DIV.style.display = "flex";
     }
@@ -256,7 +264,7 @@ export class EMULATOR{
       link.href = this.EMULATOR_CANVAS.toDataURL();
       link.click();
     };
-    this.EMULATOR_BODY_DIV.appendChild(this.EMULATOR_SCREENSHOT_BTN);
+    //this.EMULATOR_BODY_DIV.appendChild(this.EMULATOR_SCREENSHOT_BTN);
 
 
     this.RECORDING = false;
@@ -266,7 +274,7 @@ export class EMULATOR{
     this.EMULATOR_TOGGLE_RECORD_BTN.title = "Toggle recording of emulator to .webm file";
     this.EMULATOR_TOGGLE_RECORD_BTN.setAttribute("uk-icon", "video-camera");
     this.EMULATOR_TOGGLE_RECORD_BTN.onclick = () => {this.toggleRecording()};
-    this.EMULATOR_BODY_DIV.appendChild(this.EMULATOR_TOGGLE_RECORD_BTN);
+    //this.EMULATOR_BODY_DIV.appendChild(this.EMULATOR_TOGGLE_RECORD_BTN);
 
 
     // <button title="Opens link in new tab" onclick="window.open('https://tinycircuits.com/blogs/thumby/building-a-game-with-the-thumby-ide', '_blank');" class="uk-button-default uk-link-text uk-width-1-1 uk-height-1-1">Tutorial</button>
@@ -865,7 +873,7 @@ export class EMULATOR{
       return;
     }
 
-    this.statusBar.registerCount(20);
+    this.statusBar.registerCount(22);
 
     // Reset these so FPS is calculated correctly next time
     this.resetFPS();
@@ -980,29 +988,32 @@ export class EMULATOR{
           ["https://cdn.jsdelivr.net/gh/TinyCircuits/TinyCircuits-Thumby-Code-Editor@5b3710cc100a5e9aefeb627bb5b4e166abebc879/CoreThumbyFiles/lib/thumbyLogo.bin", '/lib/thumbyLogo.bin']
       ]){
         await this.loadServerFile(path, name);
-        this.statusBar.loaded(1);
+        this.statusBar.loaded(1, `File ${name} Loaded`);
       }
-      if(window.setPercent) window.setPercent(75);
+    if(window.setPercent) window.setPercent(75);
 
       // Start the emulator
       this.mcu.PC = 0x10000000;
-
       this.littlefsHelper.unmount();
-      this.statusBar.loaded(1);
+      this.statusBar.loaded(1, "Little FS Helper UnMounted");
       this.mcu.start();
+      this.statusBar.loaded(1, "MCU Started");
     } else {
       if(this.cdc) this.cdc.sendSerialByte('\x03'.charCodeAt(0));
       this.mcu.stop();  // Pause the emulator
-      this.statusBar.loaded(1);
+      this.statusBar.loaded("MCU Stopped");
 
       if(window.setPercent) window.setPercent(10);
 
       this.littlefsHelper.mount();
+      this.statusBar.loaded(1, "Little FS Helper Mounted");
       await this.uploadEditorFiles();
+      this.statusBar.loaded(1, "Uploaded Editor Files");
       this.littlefsHelper.unmount();
-      this.statusBar.loaded(15);
+      this.statusBar.loaded(1, "Little FS Helper UnMounted");
 
       this.mcu.start(); // Start it again
+      this.statusBar.loaded(1, "MCU Started");
 
       // Start the program the user chose to emulate
       if(this.MAIN_FILE.indexOf(".py") != -1){
@@ -1010,6 +1021,7 @@ export class EMULATOR{
       }else{
         this.sendStringToNormal("execfile('" + this.MAIN_FILE + ".py')");
       }
+      this.statusBar.loaded(1, "Sent Start Command");
       if(window.setPercent) window.setPercent(100);
       if(window.resetPercentDelay) window.resetPercentDelay();
     }

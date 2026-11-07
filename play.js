@@ -21,31 +21,25 @@ hidden.style.display = 'none';
 conta._layoutManager = hidden;
 conta._layoutManager.on = (a, b) => {};
 
-statusBar.loaded(1);
+statusBar.loaded(1, "Container Initialized");
 
 // Start warming up the emulator
 var EDITORS = [];
 var MAIN_EDITOR = null;
 var GAME_EDITOR = null;
 const emu = await new EMULATOR(conta, {}, EDITORS, statusBar);
-const initor = () => {
-    //loading.style.display = "initial"
+
+statusBar.loaded(1, "Emulator Initialized");
+
+const starter = async () => {
     if (MAIN_EDITOR && GAME_EDITOR) {
         GAME_EDITOR.state.mainChecked = false;
         GAME_EDITOR.MAIN_EMU_CHECKBOX.checked = false;
         MAIN_EDITOR.state.mainChecked = true;
         MAIN_EDITOR.MAIN_EMU_CHECKBOX.checked = true;
     }
-    statusBar.readyToStartGame();
-};
-
-statusBar.loaded(1);
-
-const starter = async () => {
     statusBar.showStatusBar();
     await emu.startEmulator();
-    console.log(`Emulator started with return code: ${i}`);
-    statusBar.startGame();
 }
 startGameBtn.addEventListener("click", () => {
     starter();
@@ -56,10 +50,11 @@ startGameBtn.addEventListener("click", () => {
 // On python print, log to console for debugging
 emu.onData = async (data) => {
     console.log(data);
-    if (data.includes("LOADED COMPLETE")) {
+    if (data.includes("LOADED_COMPLETE")) {
         statusBar.startGame();
     } else if (data.includes("LOADED")) {
-        statusBar.loaded(1);
+        data = data.replace("LOADED: ", "");
+        statusBar.loaded(1, data);
     }
 };
 

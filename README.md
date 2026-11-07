@@ -52,3 +52,11 @@ Oh man those explosions are crazy
 
 ### 🧃 Juice 💥
 I made this with 10+ explosions 10+ vehicles with dozens of animations for muzzle flashing
+
+### Emulator
+Emulator based off of https://github.com/TinyCircuits/TinyCircuits-Thumby-Code-Editor it's a nice emulator though made some changes so it would load in my game
+Developer Shortcuts
+* Ctrl+Q = Reload Game
+* Alt+R = Toggle Record
+
+* 1 = 

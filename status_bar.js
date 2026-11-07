@@ -9,12 +9,13 @@ export class STATUS_BAR {
 
         this.totalFiles = 0;
         this.currentFileIndex = 0;
-        this.updateStatusBar();
+        this.updateStatusBar("");
     }
     
-    updateStatusBar() {
-        this.statusText.textContent = `Files ${this.currentFileIndex}/${this.totalFiles}`;
+    updateStatusBar(message) {
+        this.statusText.textContent = `${this.currentFileIndex}/${this.totalFiles} ${message}`;
         this.statusFill.style.width = `${(this.currentFileIndex/this.totalFiles)*100}%`;
+        console.log(this.statusText.textContent);
     }
 
     registerCount(count) {
@@ -22,9 +23,9 @@ export class STATUS_BAR {
         this.updateStatusBar();
     }
 
-    loaded(count) {
+    loaded(count, message) {
         this.currentFileIndex += count;
-        this.updateStatusBar();
+        this.updateStatusBar(message);
     }
 
 
