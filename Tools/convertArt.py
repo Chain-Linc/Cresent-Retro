@@ -30,12 +30,12 @@ def pixels2Bytearray(pixels, bitDepth):
             byte = (result << number) | bitDepth
         bytes.append(byte)
 
-    retBytearray = ""
+    retBytearray = "["
     for byte in bytes:
         retBytearray += byte + ", "
-    retBytearray.
+    retBytearray.removeprefix(", ") + "]"
 
-    print(pixelsPaired)
+    print(retBytearray)
 
     return retBytearray
 
