@@ -1,1 +1,3 @@
 .venv
+Tools/Rendered/*
+!folder/path/.gitkeep
