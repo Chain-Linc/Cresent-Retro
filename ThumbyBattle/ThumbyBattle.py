@@ -10,7 +10,7 @@ print("LOADED: Thumby Imported")
 import sys
 print("LOADED: Sys Imported")
 sys.path.insert(0, '/Games/ThumbyBattle')
-from thumbyGrayscale import display, Sprite, buttonA
+from thumbyGrayscale import display, buttonA
 print("LOADED: Thumby Grayscale Imported")
 display.enableGrayscale()
 print("LOADED_COMPLETE")
