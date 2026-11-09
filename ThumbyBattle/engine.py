@@ -21,9 +21,9 @@ class Rect:
         self._size = (self._w, self._h)
 
         self._top = self._y
-        self._left = self._y
+        self._left = self._x
         self._bottom = self._y + self._h
-        self._right = self._x + self._h
+        self._right = self._x + self._w
 
         self._topleft = (self._left, self._top)
         self._bottomleft = (self._left, self._bottom)
@@ -43,9 +43,44 @@ class Rect:
     def x(self):
         return self.x
     @x.setter
-    def score(self, newX):
-        self._surface = value
+    def x(self, newX):
+        oldX = self._x
+        self._x = newX
 
+        self._pos = (self._x, self._y)
+        self.w = self._w + (newX - oldX)
+
+        self._left = self._x
+
+        self._topleft = (self._left, self._top)
+        self._bottomleft = (self._left, self._bottom)
+
+        
+
+        self._midtop = (self._centerx, self._top)
+        self._midleft = (self._left, self._centery)
+        self._midbottom = (self._centerx, self._bottom)
+        self._midright = (self._right, self._centery)
+
+    @property
+    def w(self):
+        return self._w
+    @w.setter
+    def w(self, newW):
+        self._size = (self._w, self._h)
+        self.right = self._x + self._w
+
+    @property
+    def right(self):
+        return self._w
+    @right.setter
+    def right(self, newRight):
+        self._right = newRight
+        
+        self._topright = (self._right, self._top)
+        self._bottomright = (self._right, self._bottom)
+
+        self._centerx = (self._left + self.right) / 2
 
 # bytes in format c, c, t, t which mean first 2 which are c is for 2bit color then n is for none which means it does nothing then then if all pixles are (n and t) are 1 then pixel is transparent
 class Surface:
