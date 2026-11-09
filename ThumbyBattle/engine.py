@@ -5,10 +5,44 @@ TRANSPARENT = 15
 
 class Rect:
     def __init__(self, x=0, y=0, w=0, h=0):
-        self.x = x
-        self.y = y
-        self.w = w
-        self.h = h
+        # just like pygame
+        # x,y, pos
+        # w,h, size
+        # top, left, bottom, right
+        # topleft, bottomleft, topright, bottomright
+        # centerx,centery, center
+        # midtop, midleft, midbottom, midright
+        self._x = x
+        self._y = y
+        self._pos = (self._x, self._y)
+
+        self._w = w
+        self._h = h
+        self._size = (self._w, self._h)
+
+        self._top = self._y
+        self._left = self._y
+        self._bottom = self._y + self._h
+        self._right = self._x + self._h
+
+        self._topleft = (self._left, self._top)
+        self._bottomleft = (self._left, self._bottom)
+        self._topright = (self._right, self._top)
+        self._bottomright = (self._right, self._bottom)
+
+        self._centerx = (self._left + self.right) / 2
+        self._centery = (self._top + self._bottom) / 2
+        self._center = (self._centerx, self._centery)
+
+        
+    
+    @property
+    def x(self):
+        return self.x
+    @x.setter
+    def score(self, newX):
+        self._surface = value
+
 
 # bytes in format c, c, t, t which mean first 2 which are c is for 2bit color then n is for none which means it does nothing then then if all pixles are (n and t) are 1 then pixel is transparent
 class Surface:
