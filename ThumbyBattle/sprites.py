@@ -19,4 +19,4 @@ tankTrack4Buffer = framebuf.FrameBuffer(bytearray([106,106,50,146,14,50,146,42,1
 tankTrack4MaskBuffer = framebuf.FrameBuffer(bytearray([255,127,255,127,12]), 10, 4, framebuf.MONO_HLSB)
 tankTrack4 = Sprite(tankTrack4Buffer, 10, 4, tankTrack4MaskBuffer)
 
-['tankTrack1', 'tankTrack2', 'tankTrack3', 'tankTrack4'] = AnimatedSprite(tankTrack4Buffer, 10, 4)
+tankTrack4Buffer = AnimatedSprite(['tankTrack1', 'tankTrack2', 'tankTrack3', 'tankTrack4'], 10, 4)
