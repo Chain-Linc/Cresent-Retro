@@ -34,8 +34,11 @@ class Rect:
         self._centery = (self._top + self._bottom) / 2
         self._center = (self._centerx, self._centery)
 
-        
-    
+        self._midtop = (self._centerx, self._top)
+        self._midleft = (self._left, self._centery)
+        self._midbottom = (self._centerx, self._bottom)
+        self._midright = (self._right, self._centery)
+
     @property
     def x(self):
         return self.x
