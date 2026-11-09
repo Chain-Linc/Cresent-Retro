@@ -125,7 +125,7 @@ for filePathSet in saveFileList:
         fileText = f"{fileText}\n\n{bytearrayText}\n{bytearrayMaskText}\n{spriteText}"
     
     if len(names) > 2:
-        animatedSpriteText = f"{fileVarible} = AnimatedSprite({names}, {fileWidth}, {fileHeight})"
+        animatedSpriteText = f"{fileVarible} = AnimatedSprite([{', '.join(names)}])"
         fileText = f"{fileText}\n\n{animatedSpriteText}\n"
 
 
