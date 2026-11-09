@@ -99,7 +99,7 @@ export class EMULATOR{
     this.EMULATOR_DPAD_RIGHT_BTN = document.createElement("button");
     this.EMULATOR_DPAD_RIGHT_BTN.style.borderRadius = "0";
     this.EMULATOR_DPAD_RIGHT_BTN.style.boxShadow = "none";
-    this.EMULATOR_DPAD_RIGHT_BTN_BTN.style.padding = "0px";
+    this.EMULATOR_DPAD_RIGHT_BTN.style.padding = "0px";
     this.EMULATOR_DPAD_RIGHT_BTN.classList.add("emulator_dpad_right_btn");
     this.EMULATOR_DPAD_RIGHT_BTN.onmousedown = () => {this.handleKeyDown({key: 'd'})};
     this.EMULATOR_DPAD_RIGHT_BTN.onmouseup = () => {this.handleKeyUp({key: 'd'})};
