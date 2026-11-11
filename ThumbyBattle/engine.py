@@ -1,4 +1,5 @@
 import framebuf
+from thumbyGrayscale import display
 
 TRANSPARENT = 15
 
@@ -155,20 +156,45 @@ class Surface:
     def blit(self, blitSurface, x=0, y=0):
         self.surface.blit(blitSurface.surface, x, y, key=TRANSPARENT)
 
+class Screen(Surface):
+    def __init__(self):
+        self.rect = Rect(0, 0, 72, 40)
+
+        self.screenGSL1Buffer = framebuf.FrameBuffer(display.buffer, *self.rect.size, framebuf.MONO_VLSB)
+        self.screenGSL2Buffer = framebuf.FrameBuffer(display.shading, *self.rect.size, framebuf.MONO_VLSB)
+        self.screenGSL1PalleteBuffer = framebuf.FrameBuffer(bytearray(1), 4, 1, framebuf.MONO_VLSB)
+        self.screenGSL2PalleteBuffer = framebuf.FrameBuffer(bytearray(1), 4, 1, framebuf.MONO_VLSB)
+        # | Layer 1 | Layer 2 | Colour
+        # | 0       | 0       | Black
+        # | 0       | 1       | Dark gray
+        # | 1       | 1       | Light gray
+        # | 1       | 0       | White
+        self.screenGSL1PalleteBuffer.pixel(2, 0, 1)
+        self.screenGSL1PalleteBuffer.pixel(3, 0, 1)
+        self.screenGSL2PalleteBuffer.pixel(1, 0, 1)
+        selfscreenGSL2PalleteBuffer.pixel(2, 0, 1)
+
+        surface = framebuf.FrameBuffer(bytearray(self.rect.w * self.rect.h // 4), *self.rect.size, framebuf.GS2_HMSB)
+
+        def update(self):
+            self.screenGSL1Buffer.blit(surface, 0, 0, -1, screenGSL1PalleteBuffer)
+            self.screenGSL2Buffer.blit(surface, 0, 0, -1, screenGSL2PalleteBuffer)
+            display.update()
+
 class Sprite:
     def __init__(self, surfaces, x=0, y=0, frame=0):
-        self.frame = 0
-        self._surface = self.surface
+        self._frame = frame
+        self.surfaces = surfaces
+        self.surface = self.surfaces[self._frame]
         self.rect = Rect(x, y, self.surface.w, self.surface.h)
 
     @property
-    def surface(self):
-        return self._surface
+    def frame(self):
+        return self._frame
+    @frame.setter
+    def frame(self, new):
+        self._frame = new // len(self.surfaces)
+        self.surface = self.surfaces[self._frame]
 
-    @surface.setter
-    def score(self, value):
-        self._surface = value
-        
-
-    def on_score_change(self, old, new):
-        print(f"Score changed from {old} to {new}!")
+    def blit(self, surface):
+        self.surface.blit(surface, self.rect.x, self.rect.y)
