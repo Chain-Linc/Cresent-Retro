@@ -176,10 +176,10 @@ class Screen(Surface):
 
         self.surface = framebuf.FrameBuffer(bytearray(self.rect.w * self.rect.h // 4), *self.rect.size, framebuf.GS2_HMSB)
 
-        def update(self):
-            self.screenGSL1Buffer.blit(self.surface, 0, 0, -1, self.screenGSL1PalleteBuffer)
-            self.screenGSL2Buffer.blit(self.surface, 0, 0, -1, self.screenGSL2PalleteBuffer)
-            display.update()
+    def update(self):
+        self.screenGSL1Buffer.blit(self.surface, 0, 0, -1, self.screenGSL1PalleteBuffer)
+        self.screenGSL2Buffer.blit(self.surface, 0, 0, -1, self.screenGSL2PalleteBuffer)
+        display.update()
 
 class Sprite:
     def __init__(self, surfaces, x=0, y=0, frame=0):

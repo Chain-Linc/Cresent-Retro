@@ -1,2 +1,4 @@
 thumbyGrayscale.py
 ThumbyBattle.py
+engine.py
+sprites.py
