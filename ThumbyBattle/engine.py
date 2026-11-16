@@ -1,5 +1,14 @@
 import framebuf
-from thumbyGrayscale import display
+print("LOADED: Framebuf Imported")
+import thumby
+print("LOADED: Thumby Imported")
+
+
+from thumbyGrayscale import display, buttonA
+print("LOADED: Thumby Grayscale Imported")
+
+print("LOADED_COMPLETE")
+print("FILE: Grayscale imported and enabled")
 
 TRANSPARENT = 15
 
@@ -160,34 +169,44 @@ class Screen(Surface):
         self.rect = Rect(0, 0, 72, 40)
 
         display.enableGrayscale()
-        self.screenGSL1Buffer = framebuf.FrameBuffer(display.buffer, *self.rect.size, framebuf.MONO_VLSB)
-        self.screenGSL2Buffer = framebuf.FrameBuffer(display.shading, *self.rect.size, framebuf.MONO_VLSB)
-        self.screenGSL1PalleteBuffer = framebuf.FrameBuffer(bytearray(1), 4, 1, framebuf.MONO_VLSB)
-        self.screenGSL2PalleteBuffer = framebuf.FrameBuffer(bytearray(1), 4, 1, framebuf.MONO_VLSB)
+        display.setFPS(60)
+
+        self.screenGSL1Buffer = framebuf.FrameBuffer(display.buffer, self.rect.w, self.rect.h, framebuf.MONO_VLSB)
+        self.screenGSL2Buffer = framebuf.FrameBuffer(display.shading, self.rect.w, self.rect.h, framebuf.MONO_VLSB)
+        
+        
+        self.screenGSL1PalleteBuffer = bytearray(1)
+        self.screenGSL2PalleteBuffer = bytearray(1)
+        self.screenGSL1Pallete = framebuf.FrameBuffer(self.screenGSL1PalleteBuffer, 4, 1, framebuf.MONO_VLSB)
+        self.screenGSL2Pallete = framebuf.FrameBuffer(self.screenGSL2PalleteBuffer, 4, 1, framebuf.MONO_VLSB)
         # | Layer 1 | Layer 2 | Colour
         # | 0       | 0       | Black
         # | 0       | 1       | Dark gray
         # | 1       | 1       | Light gray
         # | 1       | 0       | White
-        self.screenGSL1PalleteBuffer.pixel(2, 0, 1)
-        self.screenGSL1PalleteBuffer.pixel(3, 0, 1)
-        self.screenGSL2PalleteBuffer.pixel(1, 0, 1)
-        self.screenGSL2PalleteBuffer.pixel(2, 0, 1)
+        self.screenGSL1Pallete.pixel(2, 0, 1)
+        self.screenGSL1Pallete.pixel(3, 0, 1)
+        self.screenGSL2Pallete.pixel(1, 0, 1)
+        self.screenGSL2Pallete.pixel(2, 0, 1)
 
-        self.surface2ScreenPallete = framebuf.FrameBuffer(bytearray(8), 4, 1, framebuf.MONO_VLSB)
+        self.surface2ScreenPalleteBuffer = bytearray(8)
+        self.surface2ScreenPallete = framebuf.FrameBuffer(self.surface2ScreenPalleteBuffer, 4, 1, framebuf.MONO_VLSB)
         self.surface2ScreenPallete.pixel(0, 0, 0)
         self.surface2ScreenPallete.pixel(1, 0, 1)
         self.surface2ScreenPallete.pixel(2, 0, 2)
         self.surface2ScreenPallete.pixel(3, 0, 3)
 
-        self.surface = framebuf.FrameBuffer(bytearray(self.rect.w * self.rect.h // 4), *self.rect.size, framebuf.GS2_HMSB)
+        self.buffer = bytearray((self.rect.w * self.rect.h) // 4)
+        self.surface = framebuf.FrameBuffer(self.buffer, self.rect.w, self.rect.h, framebuf.GS2_HMSB)
 
-        display.setFPS(60)
         self.surface.fill(2)
+        print(self.buffer)
+        self.update()
 
     def update(self):
-        self.screenGSL1Buffer.blit(self.surface, 0, 0, -1, self.screenGSL1PalleteBuffer)
-        self.screenGSL2Buffer.blit(self.surface, 0, 0, -1, self.screenGSL2PalleteBuffer)
+        self.screenGSL1Buffer.blit(self.surface, 0, 0, -1, self.screenGSL1Pallete)
+        self.screenGSL2Buffer.blit(self.surface, 0, 0, -1, self.screenGSL2Pallete)
+        self.screenGSL1Buffer.fill(1)
         display.update()
 
     def blit(self, blitSurface, x=0, y=0):

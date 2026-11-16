@@ -2,25 +2,25 @@ print("FILE: Starting ThumbyBattle.py")
 print("LOADED: ThumbyBattle.py Started")
 import time
 print("LOADED: Time Imported")
-import framebuf
-print("LOADED: Framebuf Imported")
 import thumby
-print("LOADED: Thumby Imported")
-
 import sys
 print("LOADED: Sys Imported")
 sys.path.insert(0, '/Games/ThumbyBattle')
-#from thumbyGrayscale import display, buttonA
-print("LOADED: Thumby Grayscale Imported")
-
-print("LOADED_COMPLETE")
-print("FILE: Grayscale imported and enabled")
-
 import engine
 from sprites import *
 
+#buffer = bytearray((72 * 40) // 4)
+#surface = framebuf.FrameBuffer(buffer, 72, 40, framebuf.GS2_HMSB)
+
+#surface.fill(2)
+#print(buffer)
+
+testRect = engine.Rect(10, 10, 20, 20)
+print(testRect.x, testRect.y, testRect.w, testRect.h, testRect.size)
+
+
 screen = engine.Screen()
-screen.blit(tank.surface, 0, 0)
+#screen.blit(tank.surface, 0, 0)
 screen.surface.rect(10, 10, 100, 100, 2)
 
 
