@@ -37,7 +37,7 @@ class Rect:
     @property
     def size(self):
         return (self.w, self.h)
-    @pos.setter
+    @size.setter
     def size(self, new):
         self.w, self.h = new
 
@@ -171,8 +171,8 @@ class Screen(Surface):
         display.enableGrayscale()
         display.setFPS(60)
 
-        self.screenGSL1Buffer = framebuf.FrameBuffer(display.buffer, self.rect.w, self.rect.h, framebuf.MONO_VLSB)
-        self.screenGSL2Buffer = framebuf.FrameBuffer(display.shading, self.rect.w, self.rect.h, framebuf.MONO_VLSB)
+        self.screenGSL1Buffer = framebuf.FrameBuffer(display.buffer, *self.rect.size, framebuf.MONO_VLSB)
+        self.screenGSL2Buffer = framebuf.FrameBuffer(display.shading, *self.rect.size, framebuf.MONO_VLSB)
         
         
         self.screenGSL1PalleteBuffer = bytearray(1)
@@ -189,24 +189,21 @@ class Screen(Surface):
         self.screenGSL2Pallete.pixel(1, 0, 1)
         self.screenGSL2Pallete.pixel(2, 0, 1)
 
-        self.surface2ScreenPalleteBuffer = bytearray(8)
-        self.surface2ScreenPallete = framebuf.FrameBuffer(self.surface2ScreenPalleteBuffer, 4, 1, framebuf.MONO_VLSB)
+        self.surface2ScreenPalleteBuffer = bytearray(4)
+        self.surface2ScreenPallete = framebuf.FrameBuffer(self.surface2ScreenPalleteBuffer, 16, 1, framebuf.GS2_HMSB)
         self.surface2ScreenPallete.pixel(0, 0, 0)
         self.surface2ScreenPallete.pixel(1, 0, 1)
         self.surface2ScreenPallete.pixel(2, 0, 2)
         self.surface2ScreenPallete.pixel(3, 0, 3)
 
         self.buffer = bytearray((self.rect.w * self.rect.h) // 4)
-        self.surface = framebuf.FrameBuffer(self.buffer, self.rect.w, self.rect.h, framebuf.GS2_HMSB)
+        self.surface = framebuf.FrameBuffer(self.buffer, *self.rect.size, framebuf.GS2_HMSB)
 
-        self.surface.fill(2)
-        print(self.buffer)
         self.update()
 
     def update(self):
         self.screenGSL1Buffer.blit(self.surface, 0, 0, -1, self.screenGSL1Pallete)
         self.screenGSL2Buffer.blit(self.surface, 0, 0, -1, self.screenGSL2Pallete)
-        self.screenGSL1Buffer.fill(1)
         display.update()
 
     def blit(self, blitSurface, x=0, y=0):

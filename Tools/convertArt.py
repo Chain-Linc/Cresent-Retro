@@ -43,7 +43,7 @@ def pixels2Bytearray(pixels):
     for pair in pixelsPaired:
         byte = 0
         for number in pair:
-            byte = (byte << number) | 4
+            byte = (byte << 4) | (number & 0x0F)
         bytes.append(byte)
 
     # convert numbers into list
