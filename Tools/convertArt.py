@@ -86,7 +86,7 @@ saveFileList = []
 for filepath in fileList:
     getFilePath = ART_FOLDER + filepath
     saveFilePath = RENDERED_FOLDER + filepath.removesuffix(".aseprite")
-    subprocess.run(["aseprite", "-b", "--color-mode", "indexed", getFilePath, "--save-as", saveFilePath + "-1.png"])
+    subprocess.run(["aseprite", "-b", "--color-mode", "indexed", getFilePath, "--save-as", saveFilePath + "_1.png"])
     print(getFilePath, "is aseprite processed and saved to:", saveFilePath)
 
     varibleNames.append(filepath.removesuffix(".aseprite"))
@@ -94,7 +94,7 @@ for filepath in fileList:
     fileSet = []
     i = 1
     while True:
-        file = Path(saveFilePath + "-" + str(i) + ".png")
+        file = Path(saveFilePath + "_" + str(i) + ".png")
         if file.is_file():
             fileSet.append(file)
             i += 1
@@ -122,7 +122,7 @@ for i, filePathSet in enumerate(saveFileList):
         fileWidth = pillowFile.width
         fileHeight = pillowFile.height
 
-        spriteText = f"{name} = Surface(bytearray({pixels}), {fileWidth}, {fileHeight})"
+        spriteText = f"{name} = Surface({fileWidth}, {fileHeight}, bytearray({pixels}))"
         names.append(name)
 
         fileText = f"{fileText}\n{spriteText}"

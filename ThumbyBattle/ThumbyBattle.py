@@ -10,9 +10,9 @@ print("LOADED: Thumby Imported")
 import sys
 print("LOADED: Sys Imported")
 sys.path.insert(0, '/Games/ThumbyBattle')
-from thumbyGrayscale import display, buttonA
+#from thumbyGrayscale import display, buttonA
 print("LOADED: Thumby Grayscale Imported")
-display.enableGrayscale()
+
 print("LOADED_COMPLETE")
 print("FILE: Grayscale imported and enabled")
 
@@ -20,13 +20,10 @@ import engine
 from sprites import *
 
 screen = engine.Screen()
-screen.blit(tank)
+screen.blit(tank.surface, 0, 0)
+screen.surface.rect(10, 10, 100, 100, 2)
 
 
-def updateDisplay():
-    screen.update()
-
-display.setFPS(60)
 
 thumby.audio.playBlocking(1000, 100)
 thumby.audio.playBlocking(1500, 100)
@@ -34,4 +31,4 @@ thumby.audio.playBlocking(2000, 100)
 while True:
     t0 = time.ticks_ms()   # Get time (ms)
 
-    updateDisplay()
+    screen.update()

@@ -146,20 +146,20 @@ class Rect:
 # bytes in format c, c, t, t which mean first 2 which are c is for 2bit color then n is for none which means it does nothing then then if all pixles are (n and t) are 1 then pixel is transparent
 class Surface:
     def __init__(self, w, h, bytes=None):
+        self.rect = Rect(0, 0, w, h)
         if bytes == None:
             # Fancy negative floor division for ceiling division so I have enough bytes
             bytes = bytearray(-(-(w*h)//2))
         self.surface = framebuf.FrameBuffer(bytes, w, h, framebuf.GS4_HMSB)
-        self.w = w
-        self.h = h
 
     def blit(self, blitSurface, x=0, y=0):
-        self.surface.blit(blitSurface.surface, x, y, key=TRANSPARENT)
+        self.surface.blit(blitSurface.surface, x, y, TRANSPARENT)
 
 class Screen(Surface):
     def __init__(self):
         self.rect = Rect(0, 0, 72, 40)
 
+        display.enableGrayscale()
         self.screenGSL1Buffer = framebuf.FrameBuffer(display.buffer, *self.rect.size, framebuf.MONO_VLSB)
         self.screenGSL2Buffer = framebuf.FrameBuffer(display.shading, *self.rect.size, framebuf.MONO_VLSB)
         self.screenGSL1PalleteBuffer = framebuf.FrameBuffer(bytearray(1), 4, 1, framebuf.MONO_VLSB)
@@ -174,19 +174,31 @@ class Screen(Surface):
         self.screenGSL2PalleteBuffer.pixel(1, 0, 1)
         self.screenGSL2PalleteBuffer.pixel(2, 0, 1)
 
+        self.surface2ScreenPallete = framebuf.FrameBuffer(bytearray(8), 4, 1, framebuf.MONO_VLSB)
+        self.surface2ScreenPallete.pixel(0, 0, 0)
+        self.surface2ScreenPallete.pixel(1, 0, 1)
+        self.surface2ScreenPallete.pixel(2, 0, 2)
+        self.surface2ScreenPallete.pixel(3, 0, 3)
+
         self.surface = framebuf.FrameBuffer(bytearray(self.rect.w * self.rect.h // 4), *self.rect.size, framebuf.GS2_HMSB)
+
+        display.setFPS(60)
+        self.surface.fill(2)
 
     def update(self):
         self.screenGSL1Buffer.blit(self.surface, 0, 0, -1, self.screenGSL1PalleteBuffer)
         self.screenGSL2Buffer.blit(self.surface, 0, 0, -1, self.screenGSL2PalleteBuffer)
         display.update()
 
+    def blit(self, blitSurface, x=0, y=0):
+        self.surface.blit(blitSurface.surface, x, y, TRANSPARENT, self.surface2ScreenPallete)
+
 class Sprite:
     def __init__(self, surfaces, x=0, y=0, frame=0):
         self._frame = frame
         self.surfaces = surfaces
         self.surface = self.surfaces[self._frame]
-        self.rect = Rect(x, y, self.surface.w, self.surface.h)
+        self.rect = Rect(x, y, self.surface.rect.w, self.surface.rect.h)
 
     @property
     def frame(self):
