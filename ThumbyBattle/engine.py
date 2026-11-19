@@ -10,7 +10,7 @@ print("LOADED: Thumby Grayscale Imported")
 print("LOADED_COMPLETE")
 print("FILE: Grayscale imported and enabled")
 
-TRANSPARENT = 15
+TRANSPARENT = 4
 
 
 class Rect:
@@ -175,10 +175,10 @@ class Screen(Surface):
         self.screenGSL2Buffer = framebuf.FrameBuffer(display.shading, *self.rect.size, framebuf.MONO_VLSB)
         
         
-        self.screenGSL1PalleteBuffer = bytearray(1)
-        self.screenGSL2PalleteBuffer = bytearray(1)
-        self.screenGSL1Pallete = framebuf.FrameBuffer(self.screenGSL1PalleteBuffer, 4, 1, framebuf.MONO_VLSB)
-        self.screenGSL2Pallete = framebuf.FrameBuffer(self.screenGSL2PalleteBuffer, 4, 1, framebuf.MONO_VLSB)
+        self.screenGSL1PalleteBuffer = bytearray(2)
+        self.screenGSL2PalleteBuffer = bytearray(2)
+        self.screenGSL1Pallete = framebuf.FrameBuffer(self.screenGSL1PalleteBuffer, 16, 1, framebuf.MONO_VLSB)
+        self.screenGSL2Pallete = framebuf.FrameBuffer(self.screenGSL2PalleteBuffer, 16, 1, framebuf.MONO_VLSB)
         # | Layer 1 | Layer 2 | Colour
         # | 0       | 0       | Black
         # | 0       | 1       | Dark gray
@@ -189,15 +189,8 @@ class Screen(Surface):
         self.screenGSL2Pallete.pixel(1, 0, 1)
         self.screenGSL2Pallete.pixel(2, 0, 1)
 
-        self.surface2ScreenPalleteBuffer = bytearray(4)
-        self.surface2ScreenPallete = framebuf.FrameBuffer(self.surface2ScreenPalleteBuffer, 16, 1, framebuf.GS2_HMSB)
-        self.surface2ScreenPallete.pixel(0, 0, 0)
-        self.surface2ScreenPallete.pixel(1, 0, 1)
-        self.surface2ScreenPallete.pixel(2, 0, 2)
-        self.surface2ScreenPallete.pixel(3, 0, 3)
-
-        self.buffer = bytearray((self.rect.w * self.rect.h) // 4)
-        self.surface = framebuf.FrameBuffer(self.buffer, *self.rect.size, framebuf.GS2_HMSB)
+        self.buffer = bytearray((self.rect.w * self.rect.h) // 2)
+        self.surface = framebuf.FrameBuffer(self.buffer, *self.rect.size, framebuf.GS4_HMSB)
 
         self.update()
 
@@ -207,7 +200,8 @@ class Screen(Surface):
         display.update()
 
     def blit(self, blitSurface, x=0, y=0):
-        self.surface.blit(blitSurface.surface, x, y, TRANSPARENT, self.surface2ScreenPallete)
+        print("Pixel(0,0):", blitSurface.surface.pixel(0, 0), "Key:", TRANSPARENT)
+        self.surface.blit(blitSurface.surface, x, y, TRANSPARENT)
 
 class Sprite:
     def __init__(self, surfaces, x=0, y=0, frame=0):

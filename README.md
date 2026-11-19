@@ -2,14 +2,13 @@
 
 BTW this still **very** much incomplete stay tuned until I finish it
 
-
 <img src="https://tinycircuits.com/cdn/shop/products/clearthumby1065x1065-min.jpg" width="30%">
 
 A arcade game for the **Thumby**—the miniature playable keychain arcade console. 
 The Thumby *literally* only has 6 buttons, 72x40 monochrome/grayscale screen, and a piezo speaker. 🤯
 And I managed to pack in an entire action game with many detailed tanks and explosions making use of every last pixel! 🫪
 
-### 👾 Give me the link to Play!!
+### 👾 Just give me the link to Play!!
 Give it a play directly in your browser:
 **[Play Thumby Battlefield Live](https://chain-linc.github.io/Cresent-Retro/)**
 
@@ -19,7 +18,7 @@ because its sooo much fun 🤩 (maybe i'm bias but still...)
 Look at all those vehicles you can play!
 #photo of different campains
 Look at those levels!!
-#add gif
+#add gif of tank driving super fast and doing a jump
 Look at that satifying Gameplay!!!
 #add gif of chain reaction explosions
 Oh man those explosions are crazy
@@ -59,4 +58,7 @@ Developer Shortcuts
 * Ctrl+Q = Reload Game
 * Alt+R = Toggle Record
 
-* 1 = 
+### Credits
+* Thank you to Crescent HackClub for sponsering this project
+* Thanks to Thumby Engine for providing the base engine which I hacked togther for my needs
+* And I use GitHub pages for hosting

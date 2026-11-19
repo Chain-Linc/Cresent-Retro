@@ -20,8 +20,7 @@ print(testRect.x, testRect.y, testRect.w, testRect.h, testRect.size)
 
 
 screen = engine.Screen()
-screen.surface.fill(1)
-screen.surface.fill_rect(9, 9, 12, 12, 3)
+screen.surface.fill_rect(0, 20, 72, 20, 3)
 screen.blit(tank_1, 10, 10)
 #screen.surface.rect(10, 10, 100, 100, 2)
 

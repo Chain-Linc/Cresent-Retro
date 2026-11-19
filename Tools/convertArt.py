@@ -16,7 +16,7 @@ INDEX_TRANSPARENT = 0
 INDEX_OFFSET = -1
 INDEX_BACKGROUND = 0
 
-NIBBLE_TRANSPARENT = 15
+NIBBLE_TRANSPARENT = 4
 
 def convertDash2CamelCase(varibleName):
     words = varibleName.split("-")
