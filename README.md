@@ -1,6 +1,6 @@
 # Thumby Battlefield
 
-BTW this still **very** much incomplete stay tuned until I finish it
+BTW this still **very** much incomplete stay tuned until I finish it, see bottom for details
 
 <img src="https://tinycircuits.com/cdn/shop/products/clearthumby1065x1065-min.jpg" width="30%">
 
@@ -62,3 +62,41 @@ Developer Shortcuts
 * Thank you to Crescent HackClub for sponsering this project
 * Thanks to Thumby Engine for providing the base engine which I hacked togther for my needs
 * And I use GitHub pages for hosting
+
+### What I Want To Make
+This project originally was supposed to have:
+* Missions (30 total)
+* * Destroy All Enemies
+* * Destory Enemy Base
+* * Capture Enemy Flag and Bring Back
+* * Survive X Senconds
+* * Destory All Enemy (Insert Vehcle Type)
+* * (Maybe some others but those are the main ones)
+* Unlockable Garage Vehicles you can collect for doing mission
+* Free Play In which you can select any vehicle from garage and game goes on forever
+* Ammunition Types:
+* * Machine Gun (Autofire, Shoots Continueously, Least amount of damage)
+* * Granade (Manual, Limited Amount, Considerable Amount of Damage if aimed properly)
+* * Mortor (Autofire, Limited Amount, Similar to Granade but shoots farther)
+* * Guided Missile (Like a Mortor But fires from air and is heat seeker)
+* * Bombs (Like Grandade But shoots from air)
+* * Drone (Manual, Drivable and exploades on impact)
+* Vehicle Types:
+* * Tanks (Ammunition: Various Mortors, Drone, Machine Gun, Granade)
+* * Helicopters (Ammunition: Bombs, Guided Missles, Machine Gun)
+* * Planes (Ammuniton: Bombs, Guided Missles, Machine Gun)
+
+### What I Actualy Have
+What I actaully Have due to time constraints:
+* Missions (15 total)
+* * Destroy All Enemies
+* * Take Down Enemy Flag
+* * Capture Enemy Flag and Bring Back
+* * Survive X Senconds
+* Ammunition Types:
+* * Machine Gun (Autofire, Shoots Continueously, Least amount of damage)
+* * Granade (Manual, Limited Amount, Considerable Amount of Damage if aimed properly)
+* * Mortor (Autofire, Limited Amount, Similar to Granade but shoots farther)
+* * Bombs (Like Grandade But shoots from air)
+* Vehicle Types:
+* * Tanks (Ammunition: Various Mortors, Drone, Machine Gun, Granade)
