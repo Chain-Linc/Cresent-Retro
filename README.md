@@ -45,7 +45,9 @@ Oh man those explosions are crazy
 #### Tanks
 * **Up/Down**: Change Target
 * **Left/Right** Move
-* **A**: Fire
+* **A**: Fire Gun
+* **B**: Fire Granade
+* **A+B**: Pause
 
 ---
 
@@ -86,17 +88,38 @@ This project originally was supposed to have:
 * * Helicopters (Ammunition: Bombs, Guided Missles, Machine Gun)
 * * Planes (Ammuniton: Bombs, Guided Missles, Machine Gun)
 
-### What I Actualy Have
+### What I Actualy Have (Revision 1)
 What I actaully Have due to time constraints:
 * Missions (15 total)
 * * Destroy All Enemies
-* * Take Down Enemy Flag
+* * Reach Enemy Flag
 * * Capture Enemy Flag and Bring Back
 * * Survive X Senconds
 * Ammunition Types:
 * * Machine Gun (Autofire, Shoots Continueously, Least amount of damage)
 * * Granade (Manual, Limited Amount, Considerable Amount of Damage if aimed properly)
 * * Mortor (Autofire, Limited Amount, Similar to Granade but shoots farther)
-* * Bombs (Like Grandade But shoots from air)
+* * Missle (Like Mortor But shoots from air)
+* * Bombs (Like Granade But shoots from air)
 * Vehicle Types:
-* * Tanks (Ammunition: Various Mortors, Drone, Machine Gun, Granade)
+* * Tanks (Ammunition: Various Mortors, Machine Gun, Granade)
+* * * Granader (Hull Medium Fast, Ammunition: Granade)
+* * * Sprinter (Hull Fast, Ammunition: Extremly Fast Machine Gun)
+* * * Type One (Hull Medium, Ammunition: Slow Machine Gun)
+* * (Maybe) Helicopters (Ammunition: Various Missles, Machine Gun, Bomb)
+
+### What I Actualy Have (Revision 2)
+What I actaully Have due to time constraints 2.0:
+* Game Mode:
+* * Survival Mode (Upgrdes at checkpoints) (Tanks are in waves that you drive into, fixed level arcade)
+* Ammunition Types:
+* * Machine Gun (Autofire, Shoots Continueously, Least amount of damage)
+* * Granade (Manual, Limited Amount, Considerable Amount of Damage if aimed properly)
+* * Mortor (Autofire, Limited Amount, Similar to Granade but shoots farther)
+* Vehicle Types:
+* * Tanks (Ammunition: Various Mortors, Machine Gun, Granade)
+* * * Granader (Hull Medium Fast, Ammunition: Granade)
+* * * Sprinter (Hull Fast, Ammunition: Extremly Fast Machine Gun)
+* * * Type One (Hull Medium, Ammunition: Slow Machine Gun)
+* * * Chunker (Hull Slow, Ammunition: Granade, Mortor)
+* * * Sniper (Hull Medium Fast, Ammunition: Mini Mortor)
